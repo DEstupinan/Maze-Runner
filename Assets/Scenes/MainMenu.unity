@@ -1335,8 +1335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000014781952, y: -101}
-  m_SizeDelta: {x: 706.7164, y: 94.285}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -100}
+  m_SizeDelta: {x: 628.6404, y: 90.5671}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045618486
 MonoBehaviour:
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hero Journament
+  m_text: Hero's Journey
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
