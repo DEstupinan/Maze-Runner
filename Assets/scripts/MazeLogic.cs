@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 public class MazeGenerator : MonoBehaviour
 {
-    public int row = 21;
-    public int col = 21;
+    public int row = 31;
+    public int col = 31;
     public GameObject wallPrefab;
+    public GameObject treasurePrefab;
     public float wallSize = 1f;
 
     private int[,] maze;
@@ -27,11 +28,24 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
+        int randomX = Random.Range(1, (row-2)/2);
+        int randomY = Random.Range(1, (col-1)/2);
+
+        int startX;
+        int startY;
         
-        int startX = Random.Range(1, row-1);
-        int startY = Random.Range(1, col-1);
+        if(randomX==1) startX = randomX;
+        else startX=randomX*2+1;
+
+        if(randomY==1) startY = randomY;
+        else startY=randomY*2+1;
         
+       
         CarvePath(startX, startY);
+
+         if (maze[row / 2, col / 2] == 1) maze[row / 2, col / 2] = 0;
+    
+        
     }
 
     void CarvePath(int x, int y)
@@ -69,12 +83,16 @@ public class MazeGenerator : MonoBehaviour
             {
                 if (maze[x, y] == 1)
                 {
-                    Vector3 position = new Vector3(x * wallSize, y * wallSize, 0);
-                    Instantiate(wallPrefab, position, Quaternion.identity, transform);
+                    Vector3 wallPosition = new Vector3(x * wallSize, y * wallSize, 0);
+                    Instantiate(wallPrefab, wallPosition, Quaternion.identity, transform);
                 }
             }
         }
+        Vector3 treasurePosition = new Vector3((row / 2) * wallSize, (col / 2) * wallSize, 0);
+        Instantiate(treasurePrefab, treasurePosition, Quaternion.identity, transform);
     }
+
+     
 
     
     void Shuffle<T>(List<T> list)
