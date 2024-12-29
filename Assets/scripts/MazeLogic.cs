@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class MazeGenerator : MonoBehaviour
+public class MazeLogic : MonoBehaviour
 {
     public int row = 31;
     public int col = 31;
@@ -9,7 +9,7 @@ public class MazeGenerator : MonoBehaviour
     public GameObject treasurePrefab;
     public float wallSize = 1f;
 
-    private int[,] maze;
+    public int[,] maze;
 
     void Start()
     {
@@ -92,7 +92,10 @@ public class MazeGenerator : MonoBehaviour
         Instantiate(treasurePrefab, treasurePosition, Quaternion.identity, transform);
     }
 
-     
+    public int GetValue(int i,int j)
+    {
+        return maze[i, j];
+    }
 
     
     void Shuffle<T>(List<T> list)
