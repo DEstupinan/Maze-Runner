@@ -5,9 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Players> characters;
+    public int playerCount;
     private void Awake()
     {
-        if(GameManager.Instance==null)
+        if (GameManager.Instance == null)
         {
             GameManager.Instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
 
     }
 }

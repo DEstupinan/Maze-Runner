@@ -5,16 +5,16 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("MenuSelection");
+        SceneManager.LoadScene("PlayersNumber");
     }
     public void Options()
     {
         SceneManager.LoadScene("Options");
     }
-    
+
     public void Exit()
     {
-        
+
         Application.Quit();
     }
 }

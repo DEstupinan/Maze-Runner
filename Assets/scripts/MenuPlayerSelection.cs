@@ -6,57 +6,62 @@ using UnityEngine.SceneManagement;
 
 public class MenuPlayerSelection : MonoBehaviour
 {
-   private int index;
-   [SerializeField] private Image image;
-   [SerializeField] private TextMeshProUGUI nametext;
-   private GameManager gameManager;
+    private int[] index;
+    [SerializeField] private Image image;
+    [SerializeField] private TextMeshProUGUI nametext;
+    private GameManager gameManager;
+    private int i=0;
 
-   private void Start()
-   {
-    gameManager=GameManager.Instance;
-    index=PlayerPrefs.GetInt("PlayerIndex");
-    if(index>gameManager.characters.Count-1)
+    private void Start()
     {
-        index=0;
-    }
-    ShowScreen();
+        gameManager = GameManager.Instance;
+        index = new int[gameManager.playerCount];
+        index[i] = PlayerPrefs.GetInt($"Player{i}Index");
+        if (index[i] > gameManager.characters.Count - 1)
+        {
+            index[i] = 0;
+        }
+        ShowScreen();
 
-   }
+    }
 
     private void ShowScreen()
     {
-        PlayerPrefs.SetInt("PlayerIndex", index);
-        image.sprite=gameManager.characters[index].pimage;
-        nametext.text=gameManager.characters[index].pname;
+        PlayerPrefs.SetInt($"Player{i}Index", index[i]);
+        image.sprite = gameManager.characters[index[i]].pimage;
+        nametext.text = gameManager.characters[index[i]].pname;
     }
     public void Next()
     {
-        if(index==gameManager.characters.Count-1)
+        if (index[i] == gameManager.characters.Count - 1)
         {
-            index=0;
+            index[i] = 0;
         }
         else
         {
-            index++;
+            index[i]++;
         }
         ShowScreen();
     }
-      public void Previous()
+    public void Previous()
     {
-        if(index==0)
+        if (index[i] == 0)
         {
-            index=gameManager.characters.Count-1;
+            index[i] = gameManager.characters.Count - 1;
         }
         else
         {
-            index--;
+            index[i]--;
         }
         ShowScreen();
     }
     public void Select()
-    {   
-        
+    {
+        i++;
+        if(i==gameManager.playerCount)
         SceneManager.LoadScene("MainScene");
+        else
+        ShowScreen();
     }
 
 }
