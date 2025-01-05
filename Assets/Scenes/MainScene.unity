@@ -271,11 +271,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   left: 8.39
-  right: 41.55
-  up: 45.48
+  right: 25.56
+  up: 29.49
   down: 4.58
   speed: 1
   active: 1
+--- !u!1 &1014355498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014355500}
+  - component: {fileID: 1014355499}
+  m_Layer: 0
+  m_Name: TurnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1014355499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014355498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e3904e91179b5458fbad560d486463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camerafollow: {fileID: 775193288}
+--- !u!4 &1014355500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014355498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.3593526, y: 23.349363, z: 0.23325549}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286023303
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,3 +471,4 @@ SceneRoots:
   - {fileID: 775193286}
   - {fileID: 1995836491}
   - {fileID: 1488014233}
+  - {fileID: 1014355500}
