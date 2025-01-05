@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9d7866b4f6f6e4b84604beb7f82fb8, type: 3}
+  m_Name: Epiritu
+  m_EditorClassIdentifier: 
+  player: {fileID: 6754389763361480642, guid: d6cdb072072f6804e88482a6fb14203b, type: 3}
+  pimage: {fileID: 3598024242438813033, guid: e6501d276eee4e244a475762e7b6c7b9, type: 3}
+  pname: Espiritu

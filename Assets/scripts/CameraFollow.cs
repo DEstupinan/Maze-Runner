@@ -15,8 +15,9 @@ public class CameraFollow : MonoBehaviour
     public float speed;
     public bool active;
 
-    void Awake()
-    {
+    void Start()
+    {   
+        target=GameObject.FindGameObjectWithTag("Player");
         posX = target_posX + left;
         posY = target_posY + down;
         transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posY, -10), 1);
