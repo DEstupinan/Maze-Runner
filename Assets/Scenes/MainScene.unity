@@ -270,10 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  left: 8.39
-  right: 25.56
-  up: 29.49
-  down: 4.58
   speed: 1
   active: 1
 --- !u!1 &1014355498
@@ -355,6 +351,7 @@ MonoBehaviour:
   wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
   wallSize: 1
+  players: []
 --- !u!4 &1286023305
 Transform:
   m_ObjectHideFlags: 0
@@ -403,7 +400,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c787992dde11d841978c0b3a3b110bf, type: 2}
   - {fileID: 11400000, guid: 66ce854e704960a43bdb7748b8becaef, type: 2}
   - {fileID: 11400000, guid: f5f2ddce9a6959e4d9b073c303337378, type: 2}
-  playerCount: 0
+  playerCount: 2
 --- !u!4 &1488014233
 Transform:
   m_ObjectHideFlags: 0
