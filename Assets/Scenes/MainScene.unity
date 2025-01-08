@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e3904e91179b5458fbad560d486463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camerafollow: {fileID: 775193288}
+  cameraF: {fileID: 775193288}
 --- !u!4 &1014355500
 Transform:
   m_ObjectHideFlags: 0
@@ -346,8 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf75098bfb775e469d5f886aadac66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 35
-  col: 35
+  row: 27
+  col: 27
+  centerRange: 7
   wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
   wallSize: 1
@@ -400,7 +401,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c787992dde11d841978c0b3a3b110bf, type: 2}
   - {fileID: 11400000, guid: 66ce854e704960a43bdb7748b8becaef, type: 2}
   - {fileID: 11400000, guid: f5f2ddce9a6959e4d9b073c303337378, type: 2}
-  playerCount: 2
+  playerCount: 4
 --- !u!4 &1488014233
 Transform:
   m_ObjectHideFlags: 0
@@ -445,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938ea244d67585b43908ba9adbdbd5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maze: {fileID: 1286023304}
 --- !u!4 &1995836491
 Transform:
   m_ObjectHideFlags: 0

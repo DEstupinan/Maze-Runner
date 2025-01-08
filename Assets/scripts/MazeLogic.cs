@@ -2,15 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class MazeLogic : MonoBehaviour
 {
-    public int row = 35;
-    public int col = 35;
-    public GameObject wallPrefab;
-    public GameObject treasurePrefab;
+    public int row = 27, col = 27;
+    public int centerRange = 7;
+    public GameObject wallPrefab, treasurePrefab;
     public float wallSize = 1f;
-
     public int[,] maze;
     public List<Transform> players;
     private GameManager gameManager;
@@ -19,17 +18,16 @@ public class MazeLogic : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
+        players = new List<Transform>();
         GameObject[] playerObjects = new GameObject[gameManager.playerCount];
         for (int x = 0; x < gameManager.playerCount; x++)
         {
-            playerObjects[x] = GameObject.FindGameObjectWithTag($"Player{x+1}");
+            playerObjects[x] = GameObject.FindGameObjectWithTag($"Player{x + 1}");
 
 
         }
 
 
-
-        players = new List<Transform>();
         foreach (GameObject i in playerObjects)
         {
             players.Add(i.transform);
@@ -62,11 +60,7 @@ public class MazeLogic : MonoBehaviour
         if (randomY == 1) startY = randomY;
         else startY = randomY * 2 + 1;
 
-
         CarvePath(startX, startY);
-
-
-
 
     }
 
@@ -112,7 +106,6 @@ public class MazeLogic : MonoBehaviour
 
     void PlaceTreasure()
     {
-
         List<int[,]> distances = new List<int[,]>();
         foreach (Transform i in players)
         {
@@ -120,11 +113,7 @@ public class MazeLogic : MonoBehaviour
             int startY = Mathf.RoundToInt(i.position.y / wallSize);
             distances.Add(BFS(startX, startY));
         }
-
-
         Vector2Int bestPosition = FindBestCell(distances);
-
-
         Instantiate(treasurePrefab, new Vector3(bestPosition.x * wallSize, bestPosition.y * wallSize, 0), Quaternion.identity, transform);
     }
 
@@ -171,18 +160,30 @@ public class MazeLogic : MonoBehaviour
     Vector2Int FindBestCell(List<int[,]> distances)
     {
         Vector2Int bestPosition = new Vector2Int(-1, -1);
-        int minMaxDistance = int.MaxValue;
+        float minDifference = float.MaxValue;
+        float minDistanceToCenter = float.MaxValue;
 
-        for (int x = 0; x < row; x++)
+       
+        
+        int centerX = row / 2;
+        int centerY = col / 2;
+
+        for (int x = centerX - centerRange / 2; x <= centerX + centerRange / 2; x++)
         {
-            for (int y = 0; y < col; y++)
+            for (int y = centerY - centerRange / 2; y <= centerY + centerRange / 2; y++)
             {
-                if (maze[x, y] == 0)
+                if (x >= 0 && x < row && y >= 0 && y < col && maze[x, y] == 0)
                 {
                     int maxDistance = distances.Max(d => d[x, y]);
-                    if (maxDistance < minMaxDistance)
+                    int minDistance = distances.Min(d => d[x, y]);
+                    float difference = maxDistance - minDistance;
+
+                    float distanceToCenter = Vector2Int.Distance(new Vector2Int(x, y), new Vector2Int(centerX, centerY));
+
+                    if (difference < minDifference || (difference == minDifference && distanceToCenter < minDistanceToCenter))
                     {
-                        minMaxDistance = maxDistance;
+                        minDifference = difference;
+                        minDistanceToCenter = distanceToCenter;
                         bestPosition = new Vector2Int(x, y);
                     }
                 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private CameraFollow camerafollow;
+    [SerializeField] private CameraFollow cameraF;
     private GameObject currentPT;
     
     private int currentPlayerIndex = 0;
@@ -27,14 +27,15 @@ public class TurnManager : MonoBehaviour
     private void StartTurn()
     {  
         currentPT=GameObject.FindGameObjectWithTag($"Player{currentPlayerIndex+1}");
-       camerafollow.target =currentPT ;
-       currentPT.GetComponent<Movimiento>().enabled=!currentPT.GetComponent<Movimiento>().enabled;
+       cameraF.target =currentPT ;
+       currentPT.GetComponent<Move>().enabled=true;
+       currentPT.GetComponent<Move>().ResetMoves();
     }
 
     
     private void EndTurn()
     {   
-        currentPT.GetComponent<Movimiento>().enabled=!currentPT.GetComponent<Movimiento>().enabled;
+        currentPT.GetComponent<Move>().enabled=false;
         currentPlayerIndex = (currentPlayerIndex + 1) % GameManager.Instance.playerCount;
         StartTurn();
     }
