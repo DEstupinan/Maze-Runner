@@ -7,8 +7,8 @@ using Unity.Collections;
 
 public class MazeLogic : MonoBehaviour
 {
-    public int row, col;
-    public int centerRange;
+    public int row=29, col=29;
+    public int blockRange=9;
     public GameObject wallPrefab, treasurePrefab, roadPrefab;
     public float wallSize = 1f;
     public int[,] maze;
@@ -36,6 +36,7 @@ public class MazeLogic : MonoBehaviour
         GenerateMaze();
         DrawMaze();
         PlaceTreasure();
+        PlaceTrap();
     }
 
     void GenerateMaze()
@@ -119,6 +120,7 @@ public class MazeLogic : MonoBehaviour
             distances.Add(BFS(startX, startY));
         }
         Vector2Int bestPosition = FindBestCell(distances);
+        maze[bestPosition.x,bestPosition.y]=2;
         Instantiate(treasurePrefab, new Vector3(bestPosition.x * wallSize, bestPosition.y * wallSize, 0), Quaternion.identity, transform);
     }
 
@@ -173,9 +175,9 @@ public class MazeLogic : MonoBehaviour
         int centerX = row / 2;
         int centerY = col / 2;
 
-        for (int x = centerX - centerRange / 2; x <= centerX + centerRange / 2; x++)
+        for (int x = centerX - blockRange / 2; x <= centerX + blockRange / 2; x++)
         {
-            for (int y = centerY - centerRange / 2; y <= centerY + centerRange / 2; y++)
+            for (int y = centerY - blockRange / 2; y <= centerY + blockRange / 2; y++)
             {
                 if (x >= 0 && x < row && y >= 0 && y < col && maze[x, y] == 0)
                 {
@@ -196,6 +198,11 @@ public class MazeLogic : MonoBehaviour
         }
 
         return bestPosition;
+    }
+    
+    void PlaceTrap()
+    {
+        
     }
     void Shuffle<T>(List<T> list)
     {

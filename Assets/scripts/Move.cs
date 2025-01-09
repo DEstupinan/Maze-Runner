@@ -1,6 +1,6 @@
 
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Move : MonoBehaviour
 {
     private float speed = 2;
@@ -8,7 +8,7 @@ public class Move : MonoBehaviour
     [SerializeField] private int moveInitial;
     private Vector2 targetPosition;
     private MazeLogic maze;
-    private bool isMoving = false;
+    public bool isMoving = false;
     Vector2 input;
     Vector2 lastInput;
 
@@ -18,6 +18,7 @@ public class Move : MonoBehaviour
         targetPosition = transform.position;
         lastInput = Vector2.zero;
         moveAvailable = moveInitial;
+        maze = FindAnyObjectByType<MazeLogic>();
     }
 
 
@@ -34,12 +35,12 @@ public class Move : MonoBehaviour
 
             if ((input.x != 0 ^ input.y != 0) && !isMoving)
             {
-                maze = FindAnyObjectByType<MazeLogic>();
+                
                 int x = (int)transform.position.x;
                 int y = (int)transform.position.y;
                 int x_ = (int)input.x;
                 int y_ = (int)input.y;
-                if (maze.GetValue(x + x_, y + y_) == 0)
+                if (maze.GetValue(x + x_, y + y_) != 1)
                 {
                     isMoving = true;
                     targetPosition += input;
@@ -56,8 +57,11 @@ public class Move : MonoBehaviour
                 isMoving = false;
             }
         }
-
-        if (moveAvailable == 0 && isMoving==false)
+        if(maze.GetValue((int)transform.position.x,(int)transform.position.y)==2 && !isMoving)
+        {
+             SceneManager.LoadScene("final");
+        }
+        if (moveAvailable == 0 && !isMoving)
         {
             this.enabled = false;
 

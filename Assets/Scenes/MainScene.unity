@@ -346,9 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf75098bfb775e469d5f886aadac66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 27
-  col: 27
-  centerRange: 7
+  row: 29
+  col: 29
+  centerRange: 4
   wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
   roadPrefab: {fileID: 8775579333179793932, guid: 026b9d5dbd41cf04aaef75ac4bf581cf, type: 3}
