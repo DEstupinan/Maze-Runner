@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 
 public class TurnManager : MonoBehaviour
@@ -29,6 +30,7 @@ public class TurnManager : MonoBehaviour
         currentPT=GameObject.FindGameObjectWithTag($"Player{currentPlayerIndex+1}");
        cameraF.target =currentPT ;
        currentPT.GetComponent<Move>().enabled=true;
+       currentPT.GetComponent<Light2D>().enabled=true;
        currentPT.GetComponent<Move>().ResetMoves();
     }
 
@@ -36,6 +38,7 @@ public class TurnManager : MonoBehaviour
     private void EndTurn()
     {   
         currentPT.GetComponent<Move>().enabled=false;
+        currentPT.GetComponent<Light2D>().enabled=false;
         currentPlayerIndex = (currentPlayerIndex + 1) % GameManager.Instance.playerCount;
         StartTurn();
     }

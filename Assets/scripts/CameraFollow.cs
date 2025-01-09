@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
     
     public float speed;
     public bool active;
+    
 
    
 

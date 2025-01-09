@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 using System.Linq;
 using UnityEngine.Rendering;
+using Unity.Collections;
 
 public class MazeLogic : MonoBehaviour
 {
-    public int row = 27, col = 27;
-    public int centerRange = 7;
-    public GameObject wallPrefab, treasurePrefab;
+    public int row, col;
+    public int centerRange;
+    public GameObject wallPrefab, treasurePrefab, roadPrefab;
     public float wallSize = 1f;
     public int[,] maze;
     public List<Transform> players;
@@ -95,8 +96,12 @@ public class MazeLogic : MonoBehaviour
     {
         for (int x = 0; x < row; x++)
             for (int y = 0; y < col; y++)
+            {
                 if (maze[x, y] == 1)
                     Instantiate(wallPrefab, new Vector3(x * wallSize, y * wallSize, 0), Quaternion.identity, transform);
+                if (maze[x, y] == 0)
+                    Instantiate(roadPrefab, new Vector3(x * wallSize, y * wallSize, 0), Quaternion.identity, transform);
+            }
     }
 
     public int GetValue(int i, int j)
@@ -163,8 +168,8 @@ public class MazeLogic : MonoBehaviour
         float minDifference = float.MaxValue;
         float minDistanceToCenter = float.MaxValue;
 
-       
-        
+
+
         int centerX = row / 2;
         int centerY = col / 2;
 
