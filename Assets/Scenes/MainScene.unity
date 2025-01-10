@@ -311,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 1014355498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3593526, y: 23.349363, z: 0.23325549}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1286023305}
-  - component: {fileID: 1286023304}
+  - component: {fileID: 1286023306}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -334,26 +334,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1286023304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286023303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf75098bfb775e469d5f886aadac66d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  row: 29
-  col: 29
-  centerRange: 4
-  wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
-  treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
-  roadPrefab: {fileID: 8775579333179793932, guid: 026b9d5dbd41cf04aaef75ac4bf581cf, type: 3}
-  wallSize: 1
-  players: []
 --- !u!4 &1286023305
 Transform:
   m_ObjectHideFlags: 0
@@ -369,6 +349,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286023306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286023303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf75098bfb775e469d5f886aadac66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 29
+  col: 29
+  blockRange: 9
+  wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
+  treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
+  roadPrefab: {fileID: 8775579333179793932, guid: 026b9d5dbd41cf04aaef75ac4bf581cf, type: 3}
+  trapsPrefab:
+  - {fileID: 5251433059414955729, guid: 53b642424d705fb4abde5f85dec56c68, type: 3}
+  - {fileID: 5251433059414955729, guid: 42b9bb3b297e9ff46a25132ce6b4cfaf, type: 3}
+  - {fileID: 5251433059414955729, guid: 185970d80ac2d054f8f1a69c19424e45, type: 3}
+  traps: 030000000300000004000000
+  players: []
 --- !u!1 &1488014231
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +416,7 @@ Transform:
   m_GameObject: {fileID: 1488014231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 984.74304, y: 555.1421, z: 5.142279}
+  m_LocalPosition: {x: 4.09, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -447,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938ea244d67585b43908ba9adbdbd5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maze: {fileID: 1286023304}
+  maze: {fileID: 1286023306}
 --- !u!4 &1995836491
 Transform:
   m_ObjectHideFlags: 0

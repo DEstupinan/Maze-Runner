@@ -1,38 +1,41 @@
 using UnityEngine;
 using System.Collections.Generic;
-
 using System.Linq;
-using UnityEngine.Rendering;
-using Unity.Collections;
-
+using Unity.VisualScripting;
 public class MazeLogic : MonoBehaviour
 {
-    public int row=29, col=29;
-    public int blockRange=9;
+    public int row = 29, col = 29;
+    private int centerX;
+    private int centerY;
+    public int blockRange = 9;
     public GameObject wallPrefab, treasurePrefab, roadPrefab;
-    public float wallSize = 1f;
+    public List<GameObject> trapsPrefab;
+    public List<int> traps = new List<int> { 3, 3, 4 };
+
     public int[,] maze;
     public List<Transform> players;
     private GameManager gameManager;
-    private GameObject[] playerObjects;
+
+    private List<Vector2Int> directions = new List<Vector2Int>
+            {
+                new Vector2Int(0, 1),
+                new Vector2Int(0, -1),
+                new Vector2Int(1, 0),
+                new Vector2Int(-1, 0)
+            };
 
     void Start()
     {
         gameManager = GameManager.Instance;
         players = new List<Transform>();
-        GameObject[] playerObjects = new GameObject[gameManager.playerCount];
+
         for (int x = 0; x < gameManager.playerCount; x++)
         {
-            playerObjects[x] = GameObject.FindGameObjectWithTag($"Player{x + 1}");
-
-
+            players.Add(GameObject.FindGameObjectWithTag($"Player{x + 1}").transform);
         }
 
-
-        foreach (GameObject i in playerObjects)
-        {
-            players.Add(i.transform);
-        }
+        centerX = row / 2;
+        centerY = col / 2;
         GenerateMaze();
         DrawMaze();
         PlaceTreasure();
@@ -43,27 +46,13 @@ public class MazeLogic : MonoBehaviour
     {
         maze = new int[row, col];
         for (int i = 0; i < row; i++)
-        {
             for (int j = 0; j < col; j++)
-            {
                 maze[i, j] = 1;
-            }
-        }
 
-        int randomX = Random.Range(1, (row - 2) / 2);
-        int randomY = Random.Range(1, (col - 1) / 2);
-
-        int startX;
-        int startY;
-
-        if (randomX == 1) startX = randomX;
-        else startX = randomX * 2 + 1;
-
-        if (randomY == 1) startY = randomY;
-        else startY = randomY * 2 + 1;
+        int startX = Random.Range(1, (row - 1) / 2) * 2 + 1;
+        int startY = Random.Range(1, (col - 1) / 2) * 2 + 1;
 
         CarvePath(startX, startY);
-
     }
 
     void CarvePath(int x, int y)
@@ -99,9 +88,9 @@ public class MazeLogic : MonoBehaviour
             for (int y = 0; y < col; y++)
             {
                 if (maze[x, y] == 1)
-                    Instantiate(wallPrefab, new Vector3(x * wallSize, y * wallSize, 0), Quaternion.identity, transform);
+                    Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
                 if (maze[x, y] == 0)
-                    Instantiate(roadPrefab, new Vector3(x * wallSize, y * wallSize, 0), Quaternion.identity, transform);
+                    Instantiate(roadPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
             }
     }
 
@@ -115,13 +104,13 @@ public class MazeLogic : MonoBehaviour
         List<int[,]> distances = new List<int[,]>();
         foreach (Transform i in players)
         {
-            int startX = Mathf.RoundToInt(i.position.x / wallSize);
-            int startY = Mathf.RoundToInt(i.position.y / wallSize);
+            int startX = (int)i.position.x;
+            int startY = (int)i.position.y;
             distances.Add(BFS(startX, startY));
         }
         Vector2Int bestPosition = FindBestCell(distances);
-        maze[bestPosition.x,bestPosition.y]=2;
-        Instantiate(treasurePrefab, new Vector3(bestPosition.x * wallSize, bestPosition.y * wallSize, 0), Quaternion.identity, transform);
+        maze[bestPosition.x, bestPosition.y] = 2;
+        Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
     }
 
     int[,] BFS(int startX, int startY)
@@ -139,13 +128,7 @@ public class MazeLogic : MonoBehaviour
             Vector2Int current = queue.Dequeue();
             int currentDistance = distance[current.x, current.y];
 
-            List<Vector2Int> directions = new List<Vector2Int>
-            {
-                new Vector2Int(0, 1),
-                new Vector2Int(0, -1),
-                new Vector2Int(1, 0),
-                new Vector2Int(-1, 0)
-            };
+
 
             foreach (Vector2Int dir in directions)
             {
@@ -169,11 +152,6 @@ public class MazeLogic : MonoBehaviour
         Vector2Int bestPosition = new Vector2Int(-1, -1);
         float minDifference = float.MaxValue;
         float minDistanceToCenter = float.MaxValue;
-
-
-
-        int centerX = row / 2;
-        int centerY = col / 2;
 
         for (int x = centerX - blockRange / 2; x <= centerX + blockRange / 2; x++)
         {
@@ -199,10 +177,44 @@ public class MazeLogic : MonoBehaviour
 
         return bestPosition;
     }
-    
+
     void PlaceTrap()
     {
-        
+        List<Vector2Int> trapBlocksCenter = new List<Vector2Int>
+        {
+            new Vector2Int(centerX - blockRange, centerY),
+            new Vector2Int(centerX, centerY - blockRange),
+            new Vector2Int(centerX, centerY),
+            new Vector2Int(centerX, centerY + blockRange),
+            new Vector2Int(centerX + blockRange, centerY)
+        };
+        Shuffle(trapBlocksCenter);
+        while (traps.Count() > 0)
+        {
+            foreach (Vector2Int block in trapBlocksCenter)
+            {
+                while (true)
+                {
+                    int x = Random.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
+                    int y = Random.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
+
+                    if (maze[x, y] == 0)
+                    {
+                        int z = Random.Range(0, traps.Count());
+                        Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        maze[x, y] = z + 3;
+                        traps[z]--;
+                        if (traps[z] == 0)
+                        {
+                            traps.RemoveAt(z);
+                            trapsPrefab.RemoveAt(z);
+                        }
+                        break;
+                    }
+                }
+                if (traps.Count() == 0) break;
+            }
+        }
     }
     void Shuffle<T>(List<T> list)
     {
