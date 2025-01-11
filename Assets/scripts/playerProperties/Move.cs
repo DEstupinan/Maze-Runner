@@ -6,7 +6,7 @@ public class Move : MonoBehaviour
     private float speed = 2;
     private int moveAvailable;
     [SerializeField] private int moveInitial;
-    private Vector2 targetPosition;
+    public Vector2 targetPosition;
     private MazeLogic maze;
     public bool isMoving = false;
     Vector2 input;
@@ -35,7 +35,7 @@ public class Move : MonoBehaviour
 
             if ((input.x != 0 ^ input.y != 0) && !isMoving)
             {
-                
+
                 int x = (int)transform.position.x;
                 int y = (int)transform.position.y;
                 int x_ = (int)input.x;
@@ -57,9 +57,9 @@ public class Move : MonoBehaviour
                 isMoving = false;
             }
         }
-        if(maze.GetValue((int)transform.position.x,(int)transform.position.y)==2 && !isMoving)
+        if (maze.GetValue((int)transform.position.x, (int)transform.position.y) == 2 && !isMoving)
         {
-             SceneManager.LoadScene("final");
+            SceneManager.LoadScene("final");
         }
         if (moveAvailable == 0 && !isMoving)
         {

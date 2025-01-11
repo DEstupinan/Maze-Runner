@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraF: {fileID: 775193288}
+  currentPT: {fileID: 0}
 --- !u!4 &1014355500
 Transform:
   m_ObjectHideFlags: 0
@@ -475,8 +476,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1488014233}
+  - {fileID: 1014355500}
   - {fileID: 1286023305}
   - {fileID: 775193286}
   - {fileID: 1995836491}
-  - {fileID: 1488014233}
-  - {fileID: 1014355500}

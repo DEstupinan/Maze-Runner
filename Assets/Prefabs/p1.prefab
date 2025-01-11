@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7492544136830373580}
   - component: {fileID: 3142406793574227786}
   - component: {fileID: -4757823768398772690}
+  - component: {fileID: 194285377150035512}
   m_Layer: 0
   m_Name: p1
   m_TagString: Untagged
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInitial: 6
+  targetPosition: {x: 0, y: 0}
   isMoving: 0
 --- !u!114 &-4757823768398772690
 MonoBehaviour:
@@ -116,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 2
-  m_LightType: 4
+  m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.78867924, g: 0.5797449, b: 0.3199359, a: 1}
@@ -139,8 +141,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -155,3 +157,18 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &194285377150035512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622140098459315294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dd13ff1e40214429d63dbb29623a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paralysis: 0
+  blind: 0
+  turnCount: 0
