@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using System;
+using URandom = UnityEngine.Random;
+
 public class MazeLogic : MonoBehaviour
 {
     public int row = 29, col = 29;
     private int centerX;
     private int centerY;
+    private Vector2Int bestPosition;
     public int blockRange = 9;
     public GameObject wallPrefab, treasurePrefab, roadPrefab;
-    public List<GameObject> trapsPrefab;
+    public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<int> traps = new List<int> { 3, 3, 4 };
 
     public int[,] maze;
@@ -49,8 +52,8 @@ public class MazeLogic : MonoBehaviour
             for (int j = 0; j < col; j++)
                 maze[i, j] = 1;
 
-        int startX = Random.Range(1, (row - 1) / 2) * 2 + 1;
-        int startY = Random.Range(1, (col - 1) / 2) * 2 + 1;
+        int startX = URandom.Range(1, (row - 1) / 2) * 2 + 1;
+        int startY = URandom.Range(1, (col - 1) / 2) * 2 + 1;
 
         CarvePath(startX, startY);
     }
@@ -108,7 +111,7 @@ public class MazeLogic : MonoBehaviour
             int startY = (int)i.position.y;
             distances.Add(BFS(startX, startY));
         }
-        Vector2Int bestPosition = FindBestCell(distances);
+        bestPosition = FindBestCell(distances);
         maze[bestPosition.x, bestPosition.y] = 2;
         Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
     }
@@ -135,7 +138,7 @@ public class MazeLogic : MonoBehaviour
                 int nextX = current.x + dir.x;
                 int nextY = current.y + dir.y;
 
-                if (nextX >= 0 && nextX < row && nextY >= 0 && nextY < col && maze[nextX, nextY] == 0 && !visited[nextX, nextY])
+                if (nextX >= 1 && nextX <= row - 2 && nextY >= 1 && nextY <= col - 2 && maze[nextX, nextY] != 1 && !visited[nextX, nextY])
                 {
                     visited[nextX, nextY] = true;
                     distance[nextX, nextY] = currentDistance + 1;
@@ -195,12 +198,12 @@ public class MazeLogic : MonoBehaviour
             {
                 while (true)
                 {
-                    int x = Random.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
-                    int y = Random.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
+                    int x = URandom.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
+                    int y = URandom.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
 
                     if (maze[x, y] == 0)
                     {
-                        int z = Random.Range(0, traps.Count());
+                        int z = URandom.Range(0, traps.Count());
                         Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
                         maze[x, y] = z + 3;
                         traps[z]--;
@@ -215,13 +218,75 @@ public class MazeLogic : MonoBehaviour
                 if (traps.Count() == 0) break;
             }
         }
+        PlaceInevitableTrap();
+    }
+    void PlaceInevitableTrap()
+    {
+        int[,] playerDistances = BFS(bestPosition.x, bestPosition.y);
+
+
+        Vector2Int[] array ={new Vector2Int(1,1),
+                                 new Vector2Int(row-2,col-2),
+                                 new Vector2Int(1,col-2),
+                                 new Vector2Int(row-2,1)
+                                };
+        List<Vector2Int> shortRoad = new List<Vector2Int>();
+        for (int i = 0; i < gameManager.playerCount; i++)
+        {
+            shortRoad = FindShortTrip(bestPosition, array[i], playerDistances);
+            while (true)
+            {
+                int j = URandom.Range(1, shortRoad.Count() / 2);
+                if (maze[shortRoad[j].x, shortRoad[j].y] == 0)
+                {
+                    int z = URandom.Range(0, inevitableTrapPrefabs.Count());
+                    Instantiate(inevitableTrapPrefabs[z], new Vector3(shortRoad[j].x, shortRoad[j].y, 0), Quaternion.identity, transform);
+                    maze[shortRoad[j].x, shortRoad[j].y] = z + 3;
+                    break;
+                }
+            }
+        }
+
+
+    }
+    List<Vector2Int> FindShortTrip(Vector2Int start, Vector2Int end, int[,] d)
+    {
+        List<Vector2Int> shortTrip = new List<Vector2Int>();
+        shortTrip.Add(end);
+
+        while (true)
+        {
+
+
+            foreach (Vector2Int dir in directions)
+            {
+                int nextX = end.x + dir.x;
+                int nextY = end.y + dir.y;
+
+                if (nextX >= 1 && nextX <= row - 2 && nextY >= 1 && nextY <= col - 2 && maze[nextX, nextY] != 1)
+                {
+                    if (d[nextX, nextY] < d[end.x, end.y])
+                    {
+                        shortTrip.Add(new Vector2Int(nextX, nextY));
+                        end = new Vector2Int(nextX, nextY);
+                    }
+                }
+            }
+            if (end == start)
+            {
+                break;
+            }
+        }
+
+        shortTrip.Reverse();
+        return shortTrip;
     }
     void Shuffle<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
 
-            int randomIndex = Random.Range(i, list.Count);
+            int randomIndex = URandom.Range(i, list.Count);
             (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
 
         }

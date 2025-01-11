@@ -371,7 +371,11 @@ MonoBehaviour:
   - {fileID: 5251433059414955729, guid: 53b642424d705fb4abde5f85dec56c68, type: 3}
   - {fileID: 5251433059414955729, guid: 42b9bb3b297e9ff46a25132ce6b4cfaf, type: 3}
   - {fileID: 5251433059414955729, guid: 185970d80ac2d054f8f1a69c19424e45, type: 3}
-  traps: 030000000300000004000000
+  inevitableTrapPrefabs:
+  - {fileID: 5251433059414955729, guid: 53b642424d705fb4abde5f85dec56c68, type: 3}
+  - {fileID: 5251433059414955729, guid: 42b9bb3b297e9ff46a25132ce6b4cfaf, type: 3}
+  - {fileID: 5251433059414955729, guid: 185970d80ac2d054f8f1a69c19424e45, type: 3}
+  traps: 020000000200000002000000
   players: []
 --- !u!1 &1488014231
 GameObject:
