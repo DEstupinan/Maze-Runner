@@ -48,6 +48,9 @@ TagManager:
   - name: Trap
     uniqueID: 2025916693
     locked: 0
+  - name: Ability
+    uniqueID: 2949698011
+    locked: 0
   - name: Player
     uniqueID: 3468527291
     locked: 0

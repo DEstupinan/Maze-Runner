@@ -1,6 +1,8 @@
-using UnityEditor;
+using System;
+
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+
 
 
 public class TurnManager : MonoBehaviour
@@ -32,6 +34,7 @@ public class TurnManager : MonoBehaviour
 
         currentPT = GameObject.FindGameObjectWithTag($"Player{currentPlayerIndex + 1}");
         currentPT.GetComponent<Status>().turnCount++;
+        
         currentPT.GetComponent<SpriteRenderer>().sortingOrder = 3;
         cameraF.target = currentPT;
         currentPT.GetComponent<Move>().enabled = true;

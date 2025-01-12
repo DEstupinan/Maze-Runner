@@ -94,6 +94,8 @@ public class MazeLogic : MonoBehaviour
                     Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
                 if (maze[x, y] == 0)
                     Instantiate(roadPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                if (x == 0 || x == row || y == 0 || y == col)
+                    maze[x, y] = -1;
             }
     }
 
