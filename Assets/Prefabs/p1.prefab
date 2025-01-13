@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355fa08fa4810eb4385b864df730fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveAvailable: 0
   moveInitial: 6
   targetPosition: {x: 0, y: 0}
   isMoving: 0
@@ -172,6 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paralysis: 0
   blind: 0
+  initialVision: 3.5
+  abilityCoolDown: 3
   turnCount: 0
 --- !u!114 &-6556144863002978920
 MonoBehaviour:
@@ -185,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6350b9ccf7c6b33469890a399a5c0b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0
+  coolDown: 8
   portalPrefab: {fileID: 583121784366585452, guid: d78270682033c434d96cb6a5fe01bd4d, type: 3}
   portalTargetPrefab: {fileID: 583121784366585452, guid: c28414a756957dc4882167021271543d, type: 3}
   targetPosition: {x: 0, y: 0}

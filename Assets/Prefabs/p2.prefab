@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4789534228450568072}
   - component: {fileID: -542389876565255215}
   - component: {fileID: 8903854257268700149}
+  - component: {fileID: -5208520444552445788}
   m_Layer: 0
   m_Name: p2
   m_TagString: Untagged
@@ -102,7 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355fa08fa4810eb4385b864df730fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInitial: 8
+  moveAvailable: 0
+  moveInitial: 6
   targetPosition: {x: 0, y: 0}
   isMoving: 0
 --- !u!114 &-542389876565255215
@@ -171,4 +173,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paralysis: 0
   blind: 0
+  initialVision: 3.5
+  abilityCoolDown: 4
   turnCount: 0
+--- !u!114 &-5208520444552445788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798862734320213771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd27ff54231b3cf40b59645f608e4cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDown: 4
+  power: 8

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Move : MonoBehaviour
 {
     private float speed = 2;
-    private int moveAvailable;
+    public int moveAvailable;
     [SerializeField] private int moveInitial;
     public Vector2 targetPosition;
     private MazeLogic maze;
@@ -40,7 +40,7 @@ public class Move : MonoBehaviour
                 int y = (int)transform.position.y;
                 int x_ = (int)input.x;
                 int y_ = (int)input.y;
-                if (maze.GetValue(x + x_, y + y_) != 1)
+                if (maze.GetValue(x + x_, y + y_) != 1 && maze.GetValue(x + x_, y + y_) != -1)
                 {
                     isMoving = true;
                     targetPosition += input;

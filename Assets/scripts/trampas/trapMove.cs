@@ -15,21 +15,21 @@ public class trapMove : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
+        if (turn.currentPT.GetComponent<AbilityHunter>()==null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
         {
             used = true;
             affected = turn.currentPT;
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            affected.GetComponent<Move>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = true;
+            affected.GetComponent<Move>().moveAvailable=0;
             affected.GetComponent<Status>().paralysis = true;
             count = affected.GetComponent<Status>().turnCount;
         }
         if (used)
         {
-            if (count + effect + 1 == affected.GetComponent<Status>().turnCount)
+            if (count + effect  == affected.GetComponent<Status>().turnCount)
             {
                 affected.GetComponent<Status>().paralysis = false;
-                affected.GetComponent<Move>().enabled = true;
+                affected.GetComponent<Move>().ResetMoves();
                 Destroy(gameObject);
             }
         }

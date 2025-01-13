@@ -54,7 +54,7 @@ TagManager:
   - name: Player
     uniqueID: 3468527291
     locked: 0
-  - name: PLayerCT
+  - name: PlayerCT
     uniqueID: 3269737393
     locked: 0
   m_RenderingLayers:

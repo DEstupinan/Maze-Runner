@@ -5,8 +5,8 @@ public class trapVision : MonoBehaviour
 {
     private TurnManager turn;
     private GameObject affected;
-    private bool used = false;
-    [SerializeField] private int effect = 3;
+    private bool activeEffect = false;
+    [SerializeField] private int duration = 3;
     private int count;
 
     void Start()
@@ -16,27 +16,34 @@ public class trapVision : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
+        if (turn.currentPT.GetComponent<AbilityHunter>()==null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !activeEffect)
         {
-            used = true;
+            activeEffect = true;
             affected = turn.currentPT;
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            affected.GetComponent<Light2D>().pointLightOuterRadius = 0.5f;
+            GetComponent<SpriteRenderer>().enabled = true;
+            affected.GetComponent<Status>().blind = true;
 
             count = affected.GetComponent<Status>().turnCount;
         }
-        if (used)
+
+        if (activeEffect)
         {
+
+
+            if (!affected.GetComponent<Status>().blind)
+            {
+                Destroy(gameObject);
+            }
             if (Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving)
             {
-                affected.GetComponent<Status>().blind = true;
-                this.GetComponent<SpriteRenderer>().enabled = false;
+
+                GetComponent<SpriteRenderer>().enabled = false;
             }
-            if (count + effect + 1 == affected.GetComponent<Status>().turnCount)
+            if (count + duration == affected.GetComponent<Status>().turnCount)
             {
-                affected.GetComponent<Status>().paralysis = false;
+
                 affected.GetComponent<Status>().blind = false;
-                affected.GetComponent<Light2D>().pointLightOuterRadius = 3.5f;
+                affected.GetComponent<Light2D>().pointLightOuterRadius = affected.GetComponent<Status>().initialVision;
                 Destroy(gameObject);
             }
         }

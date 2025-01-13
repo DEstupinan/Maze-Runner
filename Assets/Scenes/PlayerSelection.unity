@@ -1163,6 +1163,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c787992dde11d841978c0b3a3b110bf, type: 2}
   - {fileID: 11400000, guid: 66ce854e704960a43bdb7748b8becaef, type: 2}
   - {fileID: 11400000, guid: f5f2ddce9a6959e4d9b073c303337378, type: 2}
+  - {fileID: 11400000, guid: bbe05417032347347bfc767f9d348654, type: 2}
   playerCount: 0
 --- !u!4 &1176624247
 Transform:

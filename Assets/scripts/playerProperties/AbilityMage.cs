@@ -1,11 +1,12 @@
 
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AbilityMage : MonoBehaviour
 {
 
-    public int coolDown;
+    public int coolDown = 8;
     private int count;
     private TurnManager turn;
     public GameObject portalPrefab;
@@ -22,10 +23,11 @@ public class AbilityMage : MonoBehaviour
     {
         turn = FindAnyObjectByType<TurnManager>();
         mazeR = FindAnyObjectByType<MazeLogic>();
+
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !turn.currentPT.GetComponent<Move>().isMoving && coolDown == 0)
+        if (Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT)
         {
             active = true;
             targetPosition = transform.position;
@@ -41,6 +43,11 @@ public class AbilityMage : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && portal != null)
         {
             mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 1;
+            if (transform.position != portal.transform.position)
+                Destroy(portal);
+        }
+        if(portal!=null && mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] == 1 && transform.position != portal.transform.position)
+        {
             Destroy(portal);
         }
 
@@ -52,6 +59,7 @@ public class AbilityMage : MonoBehaviour
         {
             this.GetComponent<Move>().enabled = true;
             active = false;
+            Destroy(portalTarget);
             return;
         }
 
@@ -81,7 +89,7 @@ public class AbilityMage : MonoBehaviour
                 mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 0;
                 active = false;
                 this.GetComponent<Move>().enabled = true;
-                coolDown = 8;
+                GetComponent<Status>().abilityCoolDown = coolDown;
             }
         }
     }

@@ -11,6 +11,7 @@ public class TurnManager : MonoBehaviour
     public GameObject currentPT;
 
 
+
     private int currentPlayerIndex = 0;
 
     void Start()
@@ -34,8 +35,12 @@ public class TurnManager : MonoBehaviour
 
         currentPT = GameObject.FindGameObjectWithTag($"Player{currentPlayerIndex + 1}");
         currentPT.GetComponent<Status>().turnCount++;
-        
-        currentPT.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        if (currentPT.GetComponent<Status>().abilityCoolDown >0)
+        {
+            currentPT.GetComponent<Status>().abilityCoolDown--;
+        }
+
+        currentPT.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerCT";
         cameraF.target = currentPT;
         currentPT.GetComponent<Move>().enabled = true;
         currentPT.GetComponent<Light2D>().enabled = true;
@@ -47,7 +52,7 @@ public class TurnManager : MonoBehaviour
     private void EndTurn()
     {
 
-        currentPT.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        currentPT.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
         currentPT.GetComponent<Move>().enabled = false;
         currentPT.GetComponent<Light2D>().enabled = false;
         currentPlayerIndex = (currentPlayerIndex + 1) % GameManager.Instance.playerCount;

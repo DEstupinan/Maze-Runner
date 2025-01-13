@@ -223,7 +223,8 @@ public class MazeLogic : MonoBehaviour
         PlaceInevitableTrap();
     }
     void PlaceInevitableTrap()
-    {
+    {   
+        if(inevitableTrapPrefabs.Count() == 0) return;
         int[,] playerDistances = BFS(bestPosition.x, bestPosition.y);
 
 
