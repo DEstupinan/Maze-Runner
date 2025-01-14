@@ -14,7 +14,7 @@ public class AbilityMage : MonoBehaviour
     private GameObject portal;
     private GameObject portalTarget;
     private MazeLogic mazeR;
-    private bool active = false;
+    public bool active { get; private set; } = false;
     Vector2 input;
     Vector2 lastInput = Vector2.zero;
     public Vector2 targetPosition;
@@ -27,7 +27,8 @@ public class AbilityMage : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT)
+        if (!active && Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0
+        && gameObject == turn.currentPT)
         {
             active = true;
             targetPosition = transform.position;
@@ -40,13 +41,14 @@ public class AbilityMage : MonoBehaviour
         {
             ActiveAbility();
         }
-        if (Input.GetKeyDown(KeyCode.Space) && portal != null)
+        if (portal != null && Input.GetKeyDown(KeyCode.Space))
         {
             mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 1;
-            if (transform.position != portal.transform.position)
+            if (transform.position != portal.transform.position  )
                 Destroy(portal);
         }
-        if(portal!=null && mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] == 1 && transform.position != portal.transform.position)
+        if (portal != null && mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] == 1 
+        && transform.position != portal.transform.position && !GetComponent<Move>().isMoving)
         {
             Destroy(portal);
         }
@@ -54,10 +56,10 @@ public class AbilityMage : MonoBehaviour
     }
     void ActiveAbility()
     {
-        this.GetComponent<Move>().enabled = false;
+        GetComponent<Move>().enabled = false;
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            this.GetComponent<Move>().enabled = true;
+            GetComponent<Move>().enabled = true;
             active = false;
             Destroy(portalTarget);
             return;
@@ -80,7 +82,7 @@ public class AbilityMage : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (mazeR.GetValue((int)targetPosition.x, (int)targetPosition.y) == 1)
             {
@@ -88,7 +90,7 @@ public class AbilityMage : MonoBehaviour
                 Destroy(portalTarget);
                 mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 0;
                 active = false;
-                this.GetComponent<Move>().enabled = true;
+                GetComponent<Move>().enabled = true;
                 GetComponent<Status>().abilityCoolDown = coolDown;
             }
         }

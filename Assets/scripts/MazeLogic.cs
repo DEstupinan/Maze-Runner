@@ -11,11 +11,16 @@ public class MazeLogic : MonoBehaviour
     private int centerY;
     private Vector2Int bestPosition;
     public int blockRange = 9;
-    public GameObject wallPrefab, treasurePrefab, roadPrefab;
+    public GameObject wallPrefab, treasurePrefab, roadPrefab, hogueraPrefab;
+    public List <Vector3> hogueraList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
-    public List<int> traps = new List<int> { 3, 3, 4 };
+    public List<int> traps = new List<int> { 2, 2, 2 };
+    public List<GameObject> buffPrefab;
+
+    public List<int> buff = new List<int>();
 
     public int[,] maze;
+    public GameObject[,] mazeObject;
     public List<Transform> players;
     private GameManager gameManager;
 
@@ -43,11 +48,14 @@ public class MazeLogic : MonoBehaviour
         DrawMaze();
         PlaceTreasure();
         PlaceTrap();
+        PlaceBuff();
+        PlaceHoguera();
     }
 
     void GenerateMaze()
     {
         maze = new int[row, col];
+        mazeObject = new GameObject[row, col];
         for (int i = 0; i < row; i++)
             for (int j = 0; j < col; j++)
                 maze[i, j] = 1;
@@ -91,9 +99,10 @@ public class MazeLogic : MonoBehaviour
             for (int y = 0; y < col; y++)
             {
                 if (maze[x, y] == 1)
-                    Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                    mazeObject[x, y] = Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+
                 if (maze[x, y] == 0)
-                    Instantiate(roadPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                    mazeObject[x, y] = Instantiate(roadPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
                 if (x == 0 || x == row || y == 0 || y == col)
                     maze[x, y] = -1;
             }
@@ -115,7 +124,7 @@ public class MazeLogic : MonoBehaviour
         }
         bestPosition = FindBestCell(distances);
         maze[bestPosition.x, bestPosition.y] = 2;
-        Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
+         Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
     }
 
     int[,] BFS(int startX, int startY)
@@ -185,7 +194,7 @@ public class MazeLogic : MonoBehaviour
 
     void PlaceTrap()
     {
-        List<Vector2Int> trapBlocksCenter = new List<Vector2Int>
+        List<Vector2Int> blocksCenter = new List<Vector2Int>
         {
             new Vector2Int(centerX - blockRange, centerY),
             new Vector2Int(centerX, centerY - blockRange),
@@ -193,10 +202,10 @@ public class MazeLogic : MonoBehaviour
             new Vector2Int(centerX, centerY + blockRange),
             new Vector2Int(centerX + blockRange, centerY)
         };
-        Shuffle(trapBlocksCenter);
+        Shuffle(blocksCenter);
         while (traps.Count() > 0)
         {
-            foreach (Vector2Int block in trapBlocksCenter)
+            foreach (Vector2Int block in blocksCenter)
             {
                 while (true)
                 {
@@ -206,8 +215,8 @@ public class MazeLogic : MonoBehaviour
                     if (maze[x, y] == 0)
                     {
                         int z = URandom.Range(0, traps.Count());
-                        Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
-                        maze[x, y] = z + 3;
+                         Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        maze[x, y] = 3;
                         traps[z]--;
                         if (traps[z] == 0)
                         {
@@ -223,8 +232,8 @@ public class MazeLogic : MonoBehaviour
         PlaceInevitableTrap();
     }
     void PlaceInevitableTrap()
-    {   
-        if(inevitableTrapPrefabs.Count() == 0) return;
+    {
+        if (inevitableTrapPrefabs.Count() == 0) return;
         int[,] playerDistances = BFS(bestPosition.x, bestPosition.y);
 
 
@@ -243,8 +252,8 @@ public class MazeLogic : MonoBehaviour
                 if (maze[shortRoad[j].x, shortRoad[j].y] == 0)
                 {
                     int z = URandom.Range(0, inevitableTrapPrefabs.Count());
-                    Instantiate(inevitableTrapPrefabs[z], new Vector3(shortRoad[j].x, shortRoad[j].y, 0), Quaternion.identity, transform);
-                    maze[shortRoad[j].x, shortRoad[j].y] = z + 3;
+                     Instantiate(inevitableTrapPrefabs[z], new Vector3(shortRoad[j].x, shortRoad[j].y, 0), Quaternion.identity, transform);
+                    maze[shortRoad[j].x, shortRoad[j].y] = 3;
                     break;
                 }
             }
@@ -283,6 +292,70 @@ public class MazeLogic : MonoBehaviour
 
         shortTrip.Reverse();
         return shortTrip;
+    }
+    void PlaceBuff()
+    {
+        List<Vector2Int> blocksCenter = new List<Vector2Int>
+        {
+            new Vector2Int(centerX - blockRange, centerY),
+            new Vector2Int(centerX, centerY - blockRange),
+            new Vector2Int(centerX, centerY + blockRange),
+            new Vector2Int(centerX + blockRange, centerY)
+        };
+        Shuffle(blocksCenter);
+        while (buff.Count() > 0)
+        {
+            foreach (Vector2Int block in blocksCenter)
+            {
+                while (true)
+                {
+                    int x = URandom.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
+                    int y = URandom.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
+
+                    if (maze[x, y] == 0)
+                    {
+                        int z = URandom.Range(0, buff.Count());
+                         Instantiate(buffPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        maze[x, y] = 4;
+                        buff[z]--;
+                        if (buff[z] == 0)
+                        {
+                            buff.RemoveAt(z);
+                            buffPrefab.RemoveAt(z);
+                        }
+                        break;
+                    }
+                }
+                if (buff.Count() == 0) break;
+            }
+        }
+    }
+    void PlaceHoguera()
+    {
+        List<Vector2Int> blocksCenter = new List<Vector2Int>
+        {
+            new Vector2Int(centerX - blockRange, centerY),
+            new Vector2Int(centerX, centerY - blockRange),
+            new Vector2Int(centerX, centerY + blockRange),
+            new Vector2Int(centerX + blockRange, centerY)
+        };
+
+        foreach (Vector2Int block in blocksCenter)
+        {
+            while (true)
+            {
+                int x = URandom.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
+                int y = URandom.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
+
+                if (maze[x, y] == 0)
+                {
+                     Instantiate(hogueraPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                    hogueraList.Add(new Vector3(x, y));
+                    maze[x, y] = 5;
+                    break;
+                }
+            }
+        }
     }
     void Shuffle<T>(List<T> list)
     {
