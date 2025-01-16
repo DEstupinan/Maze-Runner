@@ -20,42 +20,46 @@ public class TravelPoint : MonoBehaviour
     {
         aux = true;
         if (!active && (turn.currentPT.GetComponent<AbilityMage>() == null || !turn.currentPT.GetComponent<AbilityMage>().active) &&
-        turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && Input.GetKeyDown(KeyCode.T))
+        turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && Input.GetKeyDown(KeyCode.F)
+         && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             active = true;
             aux = false;
             affected = turn.currentPT;
             affected.GetComponent<Move>().enabled = false;
+            affected.GetComponent<Status>().selectionMode = true;
 
 
         }
         if (active)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D) && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
-                affected.transform.position = mazeLogic.hogueraList[3];
+                affected.transform.position = mazeLogic.TravelPointList[3];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
-                affected.transform.position = mazeLogic.hogueraList[0];
+                affected.transform.position = mazeLogic.TravelPointList[0];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
-                affected.transform.position = mazeLogic.hogueraList[1];
+                affected.transform.position = mazeLogic.TravelPointList[1];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
-                affected.transform.position = mazeLogic.hogueraList[2];
+                affected.transform.position = mazeLogic.TravelPointList[2];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.T) && aux)
+            if (Input.GetKeyDown(KeyCode.F) && aux && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
                 active = false;
                 affected.GetComponent<Move>().enabled = true;
+                affected.GetComponent<Status>().selectionMode = false;
             }
+            if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause) active = false;
 
         }
 

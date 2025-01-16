@@ -28,9 +28,10 @@ public class AbilityMage : MonoBehaviour
     void Update()
     {
         if (!active && Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0
-        && gameObject == turn.currentPT)
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             active = true;
+            GetComponent<Status>().selectionMode = true;
             targetPosition = transform.position;
             if (portalTarget == null)
                 portalTarget = Instantiate(portalTargetPrefab, new Vector3(targetPosition.x, targetPosition.y, 0), Quaternion.identity);
@@ -41,13 +42,13 @@ public class AbilityMage : MonoBehaviour
         {
             ActiveAbility();
         }
-        if (portal != null && Input.GetKeyDown(KeyCode.Space))
+        if (portal != null && Input.GetKeyDown(KeyCode.Space) && !GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 1;
-            if (transform.position != portal.transform.position  )
+            if (transform.position != portal.transform.position)
                 Destroy(portal);
         }
-        if (portal != null && mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] == 1 
+        if (portal != null && mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] == 1
         && transform.position != portal.transform.position && !GetComponent<Move>().isMoving)
         {
             Destroy(portal);
@@ -57,10 +58,18 @@ public class AbilityMage : MonoBehaviour
     void ActiveAbility()
     {
         GetComponent<Move>().enabled = false;
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause)
+        {
+            active = false;
+            GetComponent<Status>().selectionMode = false;
+            Destroy(portalTarget);
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Q) && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             GetComponent<Move>().enabled = true;
             active = false;
+            GetComponent<Status>().selectionMode = false;
             Destroy(portalTarget);
             return;
         }
@@ -82,7 +91,7 @@ public class AbilityMage : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             if (mazeR.GetValue((int)targetPosition.x, (int)targetPosition.y) == 1)
             {
@@ -90,6 +99,7 @@ public class AbilityMage : MonoBehaviour
                 Destroy(portalTarget);
                 mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 0;
                 active = false;
+                GetComponent<Status>().selectionMode = false;
                 GetComponent<Move>().enabled = true;
                 GetComponent<Status>().abilityCoolDown = coolDown;
             }

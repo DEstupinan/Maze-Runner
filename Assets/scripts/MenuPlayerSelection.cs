@@ -10,7 +10,7 @@ public class MenuPlayerSelection : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI nametext;
     private GameManager gameManager;
-    private int i=0;
+    private int i = 0;
 
     private void Start()
     {
@@ -30,6 +30,10 @@ public class MenuPlayerSelection : MonoBehaviour
         PlayerPrefs.SetInt($"Player{i}Index", index[i]);
         image.sprite = gameManager.characters[index[i]].pimage;
         nametext.text = gameManager.characters[index[i]].pname;
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("PlayersNumber");
     }
     public void Next()
     {
@@ -58,10 +62,10 @@ public class MenuPlayerSelection : MonoBehaviour
     public void Select()
     {
         i++;
-        if(i==gameManager.playerCount)
-        SceneManager.LoadScene("MainScene");
+        if (i == gameManager.playerCount)
+            SceneManager.LoadScene("MainScene");
         else
-        ShowScreen();
+            ShowScreen();
     }
 
 }

@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class final : MonoBehaviour
 {
-   
+
     void Start()
     {
-         Invoke("loadmenu",4);
+        Invoke("loadmenu", 4);
     }
 
     public void loadmenu()

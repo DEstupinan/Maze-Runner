@@ -173,11 +173,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paralysis: 0
   bomb: 0
+  selectionMode: 0
+  abilityActive: 0
+  reserva: 0
   refresh: 0
   buff: 0
   blind: 0
   initialVision: 3.5
-  abilityCoolDown: 0
+  abilityCoolDown: 3
   turnCount: 0
 --- !u!114 &4164248876982951092
 MonoBehaviour:
@@ -193,3 +196,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDown: 3
   cruzPrefab: {fileID: 3073531867353177662, guid: dcac789a1b516ae4b9769563a9eb79fe, type: 3}
+  roadKPrefab: {fileID: 0}

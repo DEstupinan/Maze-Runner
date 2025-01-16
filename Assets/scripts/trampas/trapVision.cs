@@ -16,7 +16,8 @@ public class trapVision : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.GetComponent<AbilityHunter>()==null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !activeEffect)
+        if (turn.currentPT.GetComponent<AbilityHunter>() == null && turn.currentPT.transform.position == transform.position
+        && !turn.currentPT.GetComponent<Move>().isMoving && !activeEffect)
         {
             activeEffect = true;
             affected = turn.currentPT;
@@ -34,7 +35,7 @@ public class trapVision : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving)
+            if (Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
 
                 GetComponent<SpriteRenderer>().enabled = false;

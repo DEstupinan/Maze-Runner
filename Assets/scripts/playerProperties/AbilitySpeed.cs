@@ -14,7 +14,8 @@ public class AbilitySpeed : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT)
+        if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             GetComponent<Status>().abilityCoolDown = coolDown;
             if (move.enabled)
@@ -23,8 +24,8 @@ public class AbilitySpeed : MonoBehaviour
 
             }
             else
-            {   
-                move.enabled=true;
+            {
+                move.enabled = true;
                 move.moveAvailable += power;
             }
 

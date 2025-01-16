@@ -4,9 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Torch : MonoBehaviour
 {
-    private GameObject affected;
-   [SerializeField] private float effect=3f;
-    private bool active = false;
+
     private TurnManager turn;
     void Start()
     {
@@ -15,20 +13,14 @@ public class Torch : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.transform.position == transform.position)
+        if (turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Status>().buff
+        && Input.GetKeyDown(KeyCode.F) && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
-            affected = turn.currentPT;
-            active = true;
-        }
-        if (active)
-        {
-            if (affected.GetComponent<Light2D>().pointLightOuterRadius == affected.GetComponent<Status>().initialVision)
-            {
-                affected.GetComponent<Status>().initialVision +=effect;
-                affected.GetComponent<Light2D>().pointLightOuterRadius = affected.GetComponent<Status>().initialVision  ;
-            }
-            else affected.GetComponent<Status>().initialVision +=effect;
+            turn.currentPT.GetComponent<Status>().torch = true;
+            turn.currentPT.GetComponent<Status>().buff = true;
             Destroy(gameObject);
+
         }
+
     }
 }

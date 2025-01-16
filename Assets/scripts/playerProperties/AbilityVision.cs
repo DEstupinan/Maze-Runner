@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class AbilityVision : MonoBehaviour
 {
     public int coolDown = 5;
-    public float power = 9f;
+    public float power = 8f;
     public int duration = 3;
     private TurnManager turn;
     private Light2D lightV;
@@ -20,11 +20,13 @@ public class AbilityVision : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT)
+        if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
 
             lightV.pointLightOuterRadius = power;
             active = true;
+            GetComponent<Status>().abilityActive = true;
             count = GetComponent<Status>().turnCount;
             if (GetComponent<Status>().blind)
             {
@@ -46,7 +48,9 @@ public class AbilityVision : MonoBehaviour
 
                 lightV.pointLightOuterRadius = GetComponent<Status>().initialVision;
                 active = false;
-                GetComponent<Status>().abilityCoolDown = coolDown;
+                GetComponent<Status>().abilityActive = false;
+                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().reserva;
+                GetComponent<Status>().reserva = 0;
             }
         }
 

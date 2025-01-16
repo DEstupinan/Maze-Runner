@@ -9,6 +9,10 @@ public class Status : MonoBehaviour
 
     public bool paralysis = false;
     public bool bomb = false;
+    public bool torch = false;
+    public bool selectionMode = false;
+    public bool abilityActive = false;
+    public int reserva = 0;
 
     public bool refresh = false;
     public bool buff = false;
@@ -30,13 +34,13 @@ public class Status : MonoBehaviour
         }
         if (buff)
         {
-            if (refresh && Input.GetKeyDown(KeyCode.R))
+            if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
                 abilityCoolDown = 0;
                 refresh = false;
                 buff = false;
             }
-            if (bomb && Input.GetKeyDown(KeyCode.R))
+            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
 
                 bomb = false;
@@ -62,6 +66,30 @@ public class Status : MonoBehaviour
                         mazeLogic.mazeObject[(int)transform.position.x + dir.x, (int)transform.position.y + dir.y] =
                         Instantiate(mazeLogic.roadPrefab, new Vector3((int)transform.position.x + dir.x, (int)transform.position.y + dir.y), Quaternion.identity, mazeLogic.transform);
                     }
+
+                }
+            }
+            if (torch && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause)
+            {
+
+
+                GetComponent<Light2D>().pointLightOuterRadius = 6f;
+
+                if (blind) blind = false;
+                int count = turnCount;
+
+                if (blind)
+                {
+                    torch = false;
+                    buff = false;
+
+                }
+                else if (count + 3 == turnCount)
+                {
+                    GetComponent<Light2D>().pointLightOuterRadius = initialVision;
+
+                    torch = false;
+                    buff = false;
 
                 }
             }

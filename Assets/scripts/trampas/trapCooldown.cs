@@ -20,10 +20,11 @@ public class trapCooldown : MonoBehaviour
             used = true;
             affected = turn.currentPT;
             GetComponent<SpriteRenderer>().enabled = true;
-            affected.GetComponent<Status>().abilityCoolDown += effect;
+            if (!affected.GetComponent<Status>().abilityActive) affected.GetComponent<Status>().abilityCoolDown += effect;
+            else affected.GetComponent<Status>().reserva += effect;
         }
 
-        if (used && Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving)
+        if (used && Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
             Destroy(gameObject);
     }
 }

@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuPN : MonoBehaviour
 {
-     private GameManager gameManager;
+    private GameManager gameManager;
 
     private void Start()
     {
-         gameManager = GameManager.Instance;
+        gameManager = GameManager.Instance;
     }
     public void P2()
     {
@@ -23,5 +23,9 @@ public class MenuPN : MonoBehaviour
     {
         gameManager.playerCount = 4;
         SceneManager.LoadScene("PlayerSelection");
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

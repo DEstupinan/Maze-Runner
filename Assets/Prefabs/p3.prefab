@@ -173,11 +173,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paralysis: 0
   bomb: 0
+  selectionMode: 0
+  abilityActive: 0
+  reserva: 0
   refresh: 0
   buff: 0
   blind: 0
   initialVision: 3.5
-  abilityCoolDown: 6
+  abilityCoolDown: 3
   turnCount: 0
 --- !u!114 &-7932782258508763400
 MonoBehaviour:

@@ -11,8 +11,8 @@ public class MazeLogic : MonoBehaviour
     private int centerY;
     private Vector2Int bestPosition;
     public int blockRange = 9;
-    public GameObject wallPrefab, treasurePrefab, roadPrefab, hogueraPrefab;
-    public List <Vector3> hogueraList;
+    public GameObject wallPrefab, treasurePrefab, roadPrefab, TravelPointPrefab;
+    public List<Vector3> TravelPointList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<int> traps = new List<int> { 2, 2, 2 };
     public List<GameObject> buffPrefab;
@@ -47,9 +47,10 @@ public class MazeLogic : MonoBehaviour
         GenerateMaze();
         DrawMaze();
         PlaceTreasure();
+        PlaceTravelPoint();
         PlaceTrap();
         PlaceBuff();
-        PlaceHoguera();
+
     }
 
     void GenerateMaze()
@@ -124,7 +125,7 @@ public class MazeLogic : MonoBehaviour
         }
         bestPosition = FindBestCell(distances);
         maze[bestPosition.x, bestPosition.y] = 2;
-         Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
+        Instantiate(treasurePrefab, new Vector3(bestPosition.x, bestPosition.y, 0), Quaternion.identity, transform);
     }
 
     int[,] BFS(int startX, int startY)
@@ -215,7 +216,7 @@ public class MazeLogic : MonoBehaviour
                     if (maze[x, y] == 0)
                     {
                         int z = URandom.Range(0, traps.Count());
-                         Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        Instantiate(trapsPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
                         maze[x, y] = 3;
                         traps[z]--;
                         if (traps[z] == 0)
@@ -252,7 +253,7 @@ public class MazeLogic : MonoBehaviour
                 if (maze[shortRoad[j].x, shortRoad[j].y] == 0)
                 {
                     int z = URandom.Range(0, inevitableTrapPrefabs.Count());
-                     Instantiate(inevitableTrapPrefabs[z], new Vector3(shortRoad[j].x, shortRoad[j].y, 0), Quaternion.identity, transform);
+                    Instantiate(inevitableTrapPrefabs[z], new Vector3(shortRoad[j].x, shortRoad[j].y, 0), Quaternion.identity, transform);
                     maze[shortRoad[j].x, shortRoad[j].y] = 3;
                     break;
                 }
@@ -315,7 +316,7 @@ public class MazeLogic : MonoBehaviour
                     if (maze[x, y] == 0)
                     {
                         int z = URandom.Range(0, buff.Count());
-                         Instantiate(buffPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        Instantiate(buffPrefab[z], new Vector3(x, y, 0), Quaternion.identity, transform);
                         maze[x, y] = 4;
                         buff[z]--;
                         if (buff[z] == 0)
@@ -330,27 +331,27 @@ public class MazeLogic : MonoBehaviour
             }
         }
     }
-    void PlaceHoguera()
+    void PlaceTravelPoint()
     {
         List<Vector2Int> blocksCenter = new List<Vector2Int>
         {
-            new Vector2Int(centerX - blockRange, centerY),
-            new Vector2Int(centerX, centerY - blockRange),
-            new Vector2Int(centerX, centerY + blockRange),
-            new Vector2Int(centerX + blockRange, centerY)
+            new Vector2Int(2, centerY),
+            new Vector2Int(centerX, 2),
+            new Vector2Int(centerX, col-3),
+            new Vector2Int(row-3, centerY)
         };
 
         foreach (Vector2Int block in blocksCenter)
         {
             while (true)
             {
-                int x = URandom.Range(block.x - blockRange / 2, 1 + block.x + blockRange / 2);
-                int y = URandom.Range(block.y - blockRange / 2, 1 + block.y + blockRange / 2);
+                int x = URandom.Range(block.x - 1, block.x + 2);
+                int y = URandom.Range(block.y - 1, block.y + 2);
 
                 if (maze[x, y] == 0)
                 {
-                     Instantiate(hogueraPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
-                    hogueraList.Add(new Vector3(x, y));
+                    Instantiate(TravelPointPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                    TravelPointList.Add(new Vector3(x, y));
                     maze[x, y] = 5;
                     break;
                 }
