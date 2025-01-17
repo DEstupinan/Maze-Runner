@@ -14,6 +14,7 @@ public class MazeLogic : MonoBehaviour
     public GameObject wallPrefab, treasurePrefab, roadPrefab, TravelPointPrefab;
     public List<Vector3> TravelPointList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
+    public List<GameObject> Roads;
     public List<int> traps = new List<int> { 2, 2, 2 };
     public List<GameObject> buffPrefab;
 
@@ -103,7 +104,11 @@ public class MazeLogic : MonoBehaviour
                     mazeObject[x, y] = Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
 
                 if (maze[x, y] == 0)
-                    mazeObject[x, y] = Instantiate(roadPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                {   
+                    int i=URandom.Range(0,5);
+                    mazeObject[x, y] = Instantiate(Roads[i], new Vector3(x, y, 0), Quaternion.identity, transform);
+                }
+                    
                 if (x == 0 || x == row || y == 0 || y == col)
                     maze[x, y] = -1;
             }

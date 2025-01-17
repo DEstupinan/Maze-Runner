@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 531065927782782238}
   - component: {fileID: 8701284960292753671}
   m_Layer: 0
-  m_Name: Road
+  m_Name: Road5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4037736, g: 0.37970784, b: 0.34054112, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7e12bb9e288c5fe4090cab7ee01f8779, type: 2}
+  m_Color: {r: 1, g: 0.79607844, b: 0.4509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
