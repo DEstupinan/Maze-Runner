@@ -1580,7 +1580,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   blockRange: 11
   wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
-  roadPrefab: {fileID: 8775579333179793932, guid: 026b9d5dbd41cf04aaef75ac4bf581cf, type: 3}
+  roadPrefab: {fileID: 8775579333179793932, guid: d1f303aa507bf1e4abeeae70c504451a, type: 3}
   TravelPointPrefab: {fileID: 903897189309951868, guid: db146c6564523bc44809cc62e992ae77, type: 3}
   TravelPointList: []
   trapsPrefab:
@@ -2847,12 +2847,37 @@ MonoBehaviour:
   - {fileID: 8775579333179793932, guid: 4db42ff6d669c94488c39ca0c2fef158, type: 3}
   - {fileID: 8775579333179793932, guid: abd5ee629573d574ab94e909bc5d86da, type: 3}
   - {fileID: 8775579333179793932, guid: 026b9d5dbd41cf04aaef75ac4bf581cf, type: 3}
+  - {fileID: 8775579333179793932, guid: 0e2c226e5cb4c494396c00943fdba370, type: 3}
+  - {fileID: 8775579333179793932, guid: 9d2a7b6eef81d50409cf24b68c8c4fe3, type: 3}
+  - {fileID: 8775579333179793932, guid: 58f01359d4f03c94ea1c07717cd454e7, type: 3}
+  - {fileID: 8775579333179793932, guid: aa6df6a8d7de2324e9aa4b3dda781c58, type: 3}
+  - {fileID: 8775579333179793932, guid: 90b79f32870b38540839ba1ce6535ac0, type: 3}
+  - {fileID: 8775579333179793932, guid: adae556170e994146864f51e7eb4cf4f, type: 3}
+  - {fileID: 8775579333179793932, guid: de6b75f6de5123141ad92bd020268a9f, type: 3}
+  - {fileID: 8775579333179793932, guid: c8cff10510ce6b948bd640686761b4b7, type: 3}
+  - {fileID: 8775579333179793932, guid: 8844f5ca30893c04f8cf5d9b5c5e1d0b, type: 3}
+  Walls:
+  - {fileID: 1982166457850359849, guid: b96c040260df4d64cb7284044984f828, type: 3}
+  - {fileID: 1982166457850359849, guid: d1ec615c6a359e344ad4ad0936779b71, type: 3}
+  - {fileID: 1982166457850359849, guid: 5eda3f09c541a1f45ad5e1cf090c9a09, type: 3}
+  - {fileID: 1982166457850359849, guid: f1573d7d8fb4fa845a790f44f0a91fdb, type: 3}
+  - {fileID: 1982166457850359849, guid: 6a3ae9d9d4ec52746a043b6ccfd04b17, type: 3}
+  - {fileID: 1982166457850359849, guid: 0ace8f279bf6e4e4fbc049dc752e5671, type: 3}
+  - {fileID: 1982166457850359849, guid: d4fb82b8c73bb41408e0815a620122c1, type: 3}
+  - {fileID: 1982166457850359849, guid: 23ea0e74c58bea048bdeab8eef1eb8b4, type: 3}
+  - {fileID: 1982166457850359849, guid: b22211383b3de26489b4bde8b187ec35, type: 3}
+  - {fileID: 1982166457850359849, guid: 3f4e6be5f2162ac4d8c376abde9ef2e9, type: 3}
+  - {fileID: 1982166457850359849, guid: 150216042bd61704d8f3bfd325abc6ba, type: 3}
+  - {fileID: 1982166457850359849, guid: 93ee1b6d298f87d4193d6a74765c5d39, type: 3}
+  - {fileID: 1982166457850359849, guid: c6a52016e7dc2d1449bdbaa73f402036, type: 3}
+  - {fileID: 1982166457850359849, guid: e9eed61d1bda3094c99c4592cc36f7a1, type: 3}
+  - {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   traps: 040000000400000004000000
   buffPrefab:
   - {fileID: 7766577212888119587, guid: 4f18f944322efb64e8acc55a00cab1f0, type: 3}
   - {fileID: 864943184771539516, guid: c31228cab536b0848a96b87be22863ea, type: 3}
   - {fileID: 2468852666233123491, guid: 7a27e740428b98e4299bac8964d7aafb, type: 3}
-  buff: 030000000300000003000000
+  buff: 040000000400000004000000
   players: []
 --- !u!1 &1324144057
 GameObject:

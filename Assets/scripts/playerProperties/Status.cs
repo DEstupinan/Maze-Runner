@@ -21,7 +21,12 @@ public class Status : MonoBehaviour
 
     public int abilityCoolDown = 0;
     public int turnCount = 0;
+    private TurnManager turn;
 
+    void start()
+    {
+        turn=FindAnyObjectByType<TurnManager>();
+    }
     void Update()
     {
         if (paralysis)
@@ -34,13 +39,13 @@ public class Status : MonoBehaviour
         }
         if (buff)
         {
-            if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
             {
                 abilityCoolDown = 0;
                 refresh = false;
                 buff = false;
             }
-            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause&& gameObject == turn.currentPT)
             {
 
                 bomb = false;
@@ -69,7 +74,7 @@ public class Status : MonoBehaviour
 
                 }
             }
-            if (torch && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (torch && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause&& gameObject == turn.currentPT)
             {
 
 

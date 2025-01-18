@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using URandom = UnityEngine.Random;
+using Unity.Collections;
 
 public class MazeLogic : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MazeLogic : MonoBehaviour
     public List<Vector3> TravelPointList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<GameObject> Roads;
+    public List<GameObject> Walls;
     public List<int> traps = new List<int> { 2, 2, 2 };
     public List<GameObject> buffPrefab;
 
@@ -100,18 +102,87 @@ public class MazeLogic : MonoBehaviour
         for (int x = 0; x < row; x++)
             for (int y = 0; y < col; y++)
             {
+
+
                 if (maze[x, y] == 1)
-                    mazeObject[x, y] = Instantiate(wallPrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                {
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[0], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[1], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[2], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[3], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[4], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[5], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[6], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[7], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[8], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[9], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[10], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[11], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[12], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[13], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[14], new Vector3(x, y, 0), Quaternion.identity, transform);
+
+                }
+                if (!Check(x, y))
+                {
+                    if (x == 0 && y != 0 && y != row - 1)
+                    {
+                        if (maze[x + 1, y] == 0) mazeObject[x, y] = Instantiate(Walls[1], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        else mazeObject[x, y] = Instantiate(Walls[13], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    }
+                    if (x == col - 1 && y != 0 && y != row - 1)
+                    {
+                        if (maze[x - 1, y] == 0) mazeObject[x, y] = Instantiate(Walls[1], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        else mazeObject[x, y] = Instantiate(Walls[14], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    }
+                    if (y == 0 && x != 0 && x != col - 1)
+                    {
+                        if (maze[x, y + 1] == 0) mazeObject[x, y] = Instantiate(Walls[0], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        else mazeObject[x, y] = Instantiate(Walls[11], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    }
+                    if (y == row - 1 && x != 0 && x != col - 1)
+                    {
+                        if (maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[0], new Vector3(x, y, 0), Quaternion.identity, transform);
+                        else mazeObject[x, y] = Instantiate(Walls[12], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    }
+
+                }
+
 
                 if (maze[x, y] == 0)
-                {   
-                    int i=URandom.Range(0,5);
-                    mazeObject[x, y] = Instantiate(Roads[i], new Vector3(x, y, 0), Quaternion.identity, transform);
-                }
+                {
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[0], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[1], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[2], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[3], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[4], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[5], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[6], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[7], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[8], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[9], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[10], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[11], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[12], new Vector3(x, y, 0), Quaternion.identity, transform);
+                    if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[13], new Vector3(x, y, 0), Quaternion.identity, transform);
                     
-                if (x == 0 || x == row || y == 0 || y == col)
-                    maze[x, y] = -1;
+                }
+
+
             }
+        mazeObject[0, 0] = Instantiate(Walls[5], new Vector3(0, 0, 0), Quaternion.identity, transform);
+        mazeObject[0, row - 1] = Instantiate(Walls[3], new Vector3(0, row - 1, 0), Quaternion.identity, transform);
+        mazeObject[col - 1, 0] = Instantiate(Walls[6], new Vector3(col - 1, 0, 0), Quaternion.identity, transform);
+        mazeObject[row - 1, col - 1] = Instantiate(Walls[4], new Vector3(row - 1, col - 1, 0), Quaternion.identity, transform);
+        for (int x = 0; x < row; x++)
+            for (int y = 0; y < col; y++)
+            {
+                if (x == 0 || y == 0 || x == col-1 || y == row-1) maze[x, y] = -1;
+            }
+        bool Check(int x, int y)
+        {
+            return x - 1 >= 0 && x + 1 < col && y - 1 >= 0 && y + 1 < row;
+        }
     }
 
     public int GetValue(int i, int j)
