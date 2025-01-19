@@ -12,7 +12,7 @@ public class MazeLogic : MonoBehaviour
     private int centerY;
     private Vector2Int bestPosition;
     public int blockRange = 9;
-    public GameObject wallPrefab, treasurePrefab, roadPrefab, TravelPointPrefab;
+    public GameObject wallPrefab, treasurePrefab, bombRoadPrefab, TravelPointPrefab;
     public List<Vector3> TravelPointList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<GameObject> Roads;
@@ -165,7 +165,7 @@ public class MazeLogic : MonoBehaviour
                     if (maze[x + 1, y] == 0 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[11], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[12], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[13], new Vector3(x, y, 0), Quaternion.identity, transform);
-                    
+                    if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[14], new Vector3(x, y, 0), Quaternion.identity, transform);
                 }
 
 

@@ -23,7 +23,7 @@ public class Status : MonoBehaviour
     public int turnCount = 0;
     private TurnManager turn;
 
-    void start()
+    void Start()
     {
         turn=FindAnyObjectByType<TurnManager>();
     }
@@ -69,7 +69,7 @@ public class Status : MonoBehaviour
                         mazeLogic.maze[(int)transform.position.x + dir.x, (int)transform.position.y + dir.y] = 0;
                         Destroy(mazeLogic.mazeObject[(int)transform.position.x + dir.x, (int)transform.position.y + dir.y]);
                         mazeLogic.mazeObject[(int)transform.position.x + dir.x, (int)transform.position.y + dir.y] =
-                        Instantiate(mazeLogic.roadPrefab, new Vector3((int)transform.position.x + dir.x, (int)transform.position.y + dir.y), Quaternion.identity, mazeLogic.transform);
+                        Instantiate(mazeLogic.bombRoadPrefab, new Vector3((int)transform.position.x + dir.x, (int)transform.position.y + dir.y), Quaternion.identity, mazeLogic.transform);
                     }
 
                 }

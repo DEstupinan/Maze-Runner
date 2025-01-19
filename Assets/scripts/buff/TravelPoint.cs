@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TravelPoint : MonoBehaviour
@@ -19,11 +20,12 @@ public class TravelPoint : MonoBehaviour
     void Update()
     {
         aux = true;
-        if (!active && (turn.currentPT.GetComponent<AbilityMage>() == null || !turn.currentPT.GetComponent<AbilityMage>().active) &&
+        if (!active && !turn.currentPT.GetComponent<Status>().selectionMode &&
         turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && Input.GetKeyDown(KeyCode.F)
          && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             active = true;
+
             aux = false;
             affected = turn.currentPT;
             affected.GetComponent<Move>().enabled = false;
@@ -57,12 +59,21 @@ public class TravelPoint : MonoBehaviour
             {
                 active = false;
                 affected.GetComponent<Move>().enabled = true;
+                
+                Invoke("Disable",0.01f);
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            {
+                active = false;
                 affected.GetComponent<Status>().selectionMode = false;
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause) active = false;
 
         }
 
+    }
+   void Disable()
+    {
+        affected.GetComponent<Status>().selectionMode = false;
     }
 
 }

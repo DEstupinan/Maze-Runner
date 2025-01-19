@@ -1028,7 +1028,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5f2ddce9a6959e4d9b073c303337378, type: 2}
   - {fileID: 11400000, guid: bbe05417032347347bfc767f9d348654, type: 2}
   - {fileID: 11400000, guid: 83da14c5b290a73468719974ef9ba581, type: 2}
-  playerCount: 2
+  - {fileID: 11400000, guid: 6ad741f81028b884d940e9a295a014a9, type: 2}
+  playerCount: 0
 --- !u!4 &1176624247
 Transform:
   m_ObjectHideFlags: 0

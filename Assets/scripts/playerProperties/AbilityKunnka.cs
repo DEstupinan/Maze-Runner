@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbilityKunnka : MonoBehaviour
 {
-    public int coolDown = 4;
+    public int coolDown = 1;
 
     private TurnManager turn;
     private MazeLogic mazeLogic;
@@ -34,6 +34,14 @@ public class AbilityKunnka : MonoBehaviour
         {
             if (gameObject != turn.currentPT) cruz.SetActive(false);
             else cruz.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Q) && gameObject == turn.currentPT && !FindAnyObjectByType<interfazBoton>().isInPause)
+            {
+                active = false;
+                Destroy(cruz);
+                GetComponent<Status>().abilityActive = false;
+                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().reserva;
+                GetComponent<Status>().reserva = 0;
+            }
             if (aux && Input.GetKeyDown(KeyCode.E) && gameObject == turn.currentPT && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
                 transform.position = cruz.transform.position;

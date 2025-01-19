@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -826440005
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6199791883379630216, guid: e6501d276eee4e244a475762e7b6c7b9, type: 3}
+  m_Sprite: {fileID: 7007010545437925719, guid: e6501d276eee4e244a475762e7b6c7b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355fa08fa4810eb4385b864df730fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
   moveAvailable: 0
   moveInitial: 6
   targetPosition: {x: 0, y: 0}
@@ -195,5 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a8fe308e908fb47a06aac43fc3faa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 5
+  coolDown: 2
   trapPrefab: {fileID: 5251433059414955729, guid: 707189e5f0effcd41bb3a1c8426187ed, type: 3}

@@ -110,8 +110,9 @@ public class TurnManager : MonoBehaviour
         }
         else textBuff.text = "Ninguno";
         textStatus.text = "SinCambios";
-        if (currentPT.GetComponent<Move>().isMoving) textStatus.text = "Moviendo";
         if (currentPT.GetComponent<Status>().blind) textStatus.text = "Cegado";
+        if (currentPT.GetComponent<Move>().isMoving) textStatus.text = "Moviendo";
+        
         if (currentPT.GetComponent<Status>().selectionMode) textStatus.text = "ModoSelección";
         if (currentPT.GetComponent<Status>().paralysis) textStatus.text = "Paralizado";
     }

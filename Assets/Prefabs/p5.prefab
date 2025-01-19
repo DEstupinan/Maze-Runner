@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355fa08fa4810eb4385b864df730fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
   moveAvailable: 0
   moveInitial: 6
   targetPosition: {x: 0, y: 0}
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.78867924, g: 0.5797449, b: 0.3199359, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -173,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paralysis: 0
   bomb: 0
+  torch: 0
   selectionMode: 0
   abilityActive: 0
   reserva: 0
@@ -194,6 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d97cdcdd6d6570459a317de54bde647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 3
+  coolDown: 2
   cruzPrefab: {fileID: 3073531867353177662, guid: dcac789a1b516ae4b9769563a9eb79fe, type: 3}
-  roadKPrefab: {fileID: 0}

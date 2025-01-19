@@ -2676,8 +2676,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.68, y: 1}
-  m_SizeDelta: {x: 180.38, y: 350.0067}
+  m_AnchoredPosition: {x: 3.68, y: 2}
+  m_SizeDelta: {x: 180.38, y: 370.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1236948459
 MonoBehaviour:
@@ -2699,10 +2699,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Presione W,A,S,D \npara moverse\n\nPresione E para activar/confirmar habilidad\n\nPresione
-    Q para cancelar\n\nPresione R para usar objeto\n\nPresione F para recoger objeto/activar
-    portal\n\nPresione Barra Espaciadora para pasar turno\n\nPresione Escape para
-    abrir el men\xFA de pausa"
+  m_text: "Presione W,A,S,D / Up,Left,Down,Right\npara moverse\n\nPresione E para
+    activar/confirmar habilidad\n\nPresione Q para cancelar habilidad\n\nPresione
+    R para usar objeto\n\nPresione F para recoger objeto/activar y confirmar portal\n\nPresione
+    Barra Espaciadora para pasar turno\n\nPresione Escape para abrir el men\xFA de
+    pausa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2830,7 +2831,7 @@ MonoBehaviour:
   blockRange: 11
   wallPrefab: {fileID: 1982166457850359849, guid: 32bf094ea63e920428aae5dc066f6040, type: 3}
   treasurePrefab: {fileID: 4113212210856534788, guid: bd2972bd60a41ff4a91a107df6e19282, type: 3}
-  roadPrefab: {fileID: 8775579333179793932, guid: d1f303aa507bf1e4abeeae70c504451a, type: 3}
+  bombRoadPrefab: {fileID: 8775579333179793932, guid: d1f303aa507bf1e4abeeae70c504451a, type: 3}
   TravelPointPrefab: {fileID: 903897189309951868, guid: db146c6564523bc44809cc62e992ae77, type: 3}
   TravelPointList: []
   trapsPrefab:
@@ -2856,6 +2857,7 @@ MonoBehaviour:
   - {fileID: 8775579333179793932, guid: de6b75f6de5123141ad92bd020268a9f, type: 3}
   - {fileID: 8775579333179793932, guid: c8cff10510ce6b948bd640686761b4b7, type: 3}
   - {fileID: 8775579333179793932, guid: 8844f5ca30893c04f8cf5d9b5c5e1d0b, type: 3}
+  - {fileID: 8775579333179793932, guid: c95f3931b1d706a40888a5f97d63e57f, type: 3}
   Walls:
   - {fileID: 1982166457850359849, guid: b96c040260df4d64cb7284044984f828, type: 3}
   - {fileID: 1982166457850359849, guid: d1ec615c6a359e344ad4ad0936779b71, type: 3}
@@ -3183,8 +3185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 306.13, y: 46.43759}
-  m_SizeDelta: {x: -612.26, y: -92.8752}
+  m_AnchoredPosition: {x: 306.13, y: 18.592773}
+  m_SizeDelta: {x: -612.26, y: -37.1856}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451289067
 MonoBehaviour:
@@ -3259,6 +3261,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5f2ddce9a6959e4d9b073c303337378, type: 2}
   - {fileID: 11400000, guid: bbe05417032347347bfc767f9d348654, type: 2}
   - {fileID: 11400000, guid: 83da14c5b290a73468719974ef9ba581, type: 2}
+  - {fileID: 11400000, guid: 6ad741f81028b884d940e9a295a014a9, type: 2}
   playerCount: 4
 --- !u!4 &1488014233
 Transform:

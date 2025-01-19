@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour
@@ -12,7 +13,7 @@ public class Spawn : MonoBehaviour
 
     void Awake()
     {
-        Vector3[] position ={new Vector3(1,1,0),
+        List <Vector3> position =new List<Vector3>{new Vector3(1,1,0),
                                  new Vector3(maze.row-2,maze.col-2,0),
                                  new Vector3(1,maze.col-2,0),
                                  new Vector3(maze.row-2,1,0)
@@ -21,7 +22,9 @@ public class Spawn : MonoBehaviour
         for (int x = 0; x < gameManager.playerCount; x++)
         {
             int indexList = PlayerPrefs.GetInt($"Player{x}Index");
-            player[x] = Instantiate(GameManager.Instance.characters[indexList].player, position[x], Quaternion.identity);
+            int spawnPosition=Random.Range(0,position.Count);
+            player[x] = Instantiate(GameManager.Instance.characters[indexList].player, position[spawnPosition], Quaternion.identity);
+            position.RemoveAt(spawnPosition);
             player[x].tag = $"Player{x + 1}";
         }
 

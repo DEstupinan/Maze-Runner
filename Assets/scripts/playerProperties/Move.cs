@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Move : MonoBehaviour
 {
-    private float speed = 2;
+    public float speed = 2;
     public int moveAvailable;
     [SerializeField] private int moveInitial;
     public Vector2 targetPosition;

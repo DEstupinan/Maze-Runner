@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cazador
   m_EditorClassIdentifier: 
   player: {fileID: 6754389763361480642, guid: 3b13987dbccc801459a15be8a01e2b04, type: 3}
-  pimage: {fileID: 6199791883379630216, guid: e6501d276eee4e244a475762e7b6c7b9, type: 3}
+  pimage: {fileID: 7007010545437925719, guid: e6501d276eee4e244a475762e7b6c7b9, type: 3}
   pname: Cazador

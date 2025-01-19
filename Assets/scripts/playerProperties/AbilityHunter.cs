@@ -1,9 +1,12 @@
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AbilityHunter : MonoBehaviour
 {
-    public int coolDown = 4;
+    public int coolDown = 1;
+    int x;
+    int y;
     [SerializeField] private GameObject trapPrefab;
     private GameObject trap;
     private TurnManager turn;
@@ -24,9 +27,21 @@ public class AbilityHunter : MonoBehaviour
         && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
         {
             GetComponent<Status>().abilityCoolDown = coolDown;
-            mazeR.mazeObject[(int)transform.position.x, (int)transform.position.y] = trap = Instantiate(trapPrefab, transform.position, Quaternion.identity, mazeR.transform);
+            while (true)
+            {
+
+
+                x = Random.Range(1, mazeR.col - 1);
+                y = Random.Range(1, mazeR.row - 1);
+                if (mazeR.maze[x, y] == 0)
+                {
+                    trap = Instantiate(trapPrefab, new Vector3(x, y, 0), Quaternion.identity, mazeR.transform);
+                    break;
+                }
+            }
+
             used = true;
-            mazeR.maze[(int)transform.position.x, (int)transform.position.y] = 3;
+            mazeR.maze[x, y] = 3;
 
         }
         if (used && Input.GetKeyDown(KeyCode.Space) && !move.isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)

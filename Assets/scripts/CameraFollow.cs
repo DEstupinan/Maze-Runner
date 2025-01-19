@@ -8,7 +8,10 @@ public class CameraFollow : MonoBehaviour
     public bool active;
 
 
-
+ void Start()
+ {
+    transform.position=GameObject.FindGameObjectWithTag("Player1").transform.position;
+ }
 
     void MoveCamera()
     {

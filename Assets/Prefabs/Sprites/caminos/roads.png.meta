@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: road
+      name: road10
       rect:
         serializedVersion: 2
         x: 64
@@ -408,7 +408,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: road15
+      name: road16
       rect:
         serializedVersion: 2
         x: 32
@@ -429,6 +429,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: road15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d26be5a90a672c4bbf78b4018862b83
+      internalID: -1835132501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -443,13 +465,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      road: -525475779
       road1: -6043416981284610355
+      road10: -525475779
       road11: -200169197
       road12: -1646507372
       road13: -1288834816
       road14: -2048320011
-      road15: -1652640147
+      road15: -1835132501
+      road16: -1652640147
       road2: 289248852
       road3: 1056107265
       road4: 1022579612

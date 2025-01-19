@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355fa08fa4810eb4385b864df730fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
   moveAvailable: 0
   moveInitial: 6
   targetPosition: {x: 0, y: 0}
@@ -196,4 +197,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 4
-  power: 8
+  power: 10
