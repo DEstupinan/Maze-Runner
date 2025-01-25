@@ -57,10 +57,7 @@ public class Move : MonoBehaviour
                 isMoving = false;
             }
         }
-        if (maze.GetValue((int)transform.position.x, (int)transform.position.y) == 2 && !isMoving)
-        {
-            SceneManager.LoadScene("final");
-        }
+        
         if (moveAvailable == 0 && !isMoving)
         {
             this.enabled = false;

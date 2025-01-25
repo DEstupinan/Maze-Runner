@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
  void Start()
  {
-    transform.position=GameObject.FindGameObjectWithTag("Player1").transform.position;
+    transform.position=new Vector3(GameObject.FindGameObjectWithTag("Player1").transform.position.x,GameObject.FindGameObjectWithTag("Player1").transform.position.y,-10);
  }
 
     void MoveCamera()

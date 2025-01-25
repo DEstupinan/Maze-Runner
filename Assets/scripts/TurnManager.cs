@@ -56,6 +56,7 @@ public class TurnManager : MonoBehaviour
         {
             currentPT.GetComponent<Status>().abilityCoolDown--;
         }
+        
 
         currentPT.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerCT";
         cameraF.target = currentPT;

@@ -2,19 +2,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
-{
+{   
+    public GameObject enciclopedia;
     public void Play()
     {
         SceneManager.LoadScene("PlayersNumber");
     }
-    public void Options()
+    public void Enciclopedia()
     {
-        SceneManager.LoadScene("Options");
+        enciclopedia.SetActive(true);
     }
 
     public void Exit()
     {
 
         Application.Quit();
+    }
+    public void Cerrar()
+    {
+        enciclopedia.SetActive(false);
     }
 }

@@ -1,6 +1,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +10,8 @@ public class Status : MonoBehaviour
 {
 
     public bool paralysis = false;
+    public int count = 0;
+    private bool used = false;
     public bool bomb = false;
     public bool torch = false;
     public bool selectionMode = false;
@@ -25,7 +29,7 @@ public class Status : MonoBehaviour
 
     void Start()
     {
-        turn=FindAnyObjectByType<TurnManager>();
+        turn = FindAnyObjectByType<TurnManager>();
     }
     void Update()
     {
@@ -45,7 +49,7 @@ public class Status : MonoBehaviour
                 refresh = false;
                 buff = false;
             }
-            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause&& gameObject == turn.currentPT)
+            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
             {
 
                 bomb = false;
@@ -74,30 +78,37 @@ public class Status : MonoBehaviour
 
                 }
             }
-            if (torch && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause&& gameObject == turn.currentPT)
+            if (torch)
             {
-
-
-                GetComponent<Light2D>().pointLightOuterRadius = 6f;
-
-                if (blind) blind = false;
-                int count = turnCount;
-
-                if (blind)
+                if (!used && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
                 {
-                    torch = false;
-                    buff = false;
+
+
+                    GetComponent<Light2D>().pointLightOuterRadius = 6f;
+                    used = true;
+                    if (blind) blind = false;
+                    count = turnCount;
+
+                    if (blind)
+                    {
+                        torch = false;
+                        buff = false;
+                        used = false;
+
+                    }
 
                 }
-                else if (count + 3 == turnCount)
+                if (used && count + 3 == turnCount)
                 {
                     GetComponent<Light2D>().pointLightOuterRadius = initialVision;
 
                     torch = false;
                     buff = false;
+                    used = false;
 
                 }
             }
+
         }
 
 
