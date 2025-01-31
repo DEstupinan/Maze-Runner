@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] private CameraFollow cameraF;
-    public GameObject currentPT;
+    [HideInInspector] public GameObject currentPT;
     public TMP_Text textCurrentPT;
     public TMP_Text textMoveAvailable;
     public TMP_Text textAbilityCoolDown;
@@ -49,7 +49,7 @@ public class TurnManager : MonoBehaviour
         {
             currentPT.GetComponent<Status>().abilityCoolDown--;
         }
-        
+
 
         currentPT.GetComponent<SpriteRenderer>().sortingLayerName = "PlayerCT";
         cameraF.target = currentPT;
@@ -106,7 +106,7 @@ public class TurnManager : MonoBehaviour
         textStatus.text = "SinCambios";
         if (currentPT.GetComponent<Status>().blind) textStatus.text = "Cegado";
         if (currentPT.GetComponent<Move>().isMoving) textStatus.text = "Moviendo";
-        
+
         if (currentPT.GetComponent<Status>().selectionMode) textStatus.text = "ModoSelección";
         if (currentPT.GetComponent<Status>().paralysis) textStatus.text = "Paralizado";
     }

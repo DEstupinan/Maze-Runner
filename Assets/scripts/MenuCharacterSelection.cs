@@ -31,7 +31,7 @@ public class MenuCharacterSelection : MonoBehaviour
         PlayerPrefs.SetInt($"Player{i}Index", index[i]);
         image.sprite = gameManager.characters[index[i]].pimage;
         nametext.text = gameManager.characters[index[i]].pname;
-        playerNumber.text=$"Jugador{i+1}";
+        playerNumber.text = $"Jugador{i + 1}";
     }
     public void Back()
     {

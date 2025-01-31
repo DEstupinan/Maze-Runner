@@ -4,16 +4,16 @@ public class AbilityGolem : MonoBehaviour
 {
     public int coolDown = 2;
 
-   [SerializeField] private Vector2 lastTarget;
-   [SerializeField] private Vector2 direction;
+    private Vector2 lastTarget;
+    private Vector2 direction;
 
     private TurnManager turn;
     private MazeLogic mazeLogic;
-    
+
     [SerializeField] private GameObject clonePrefab;
     private GameObject clone;
-   [SerializeField] private Vector2 cloneTarget;
-    
+    private Vector2 cloneTarget;
+
 
 
     private Move move;
@@ -33,7 +33,7 @@ public class AbilityGolem : MonoBehaviour
         && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT
         && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
-           clone= Instantiate(clonePrefab, transform.position, Quaternion.identity);
+            clone = Instantiate(clonePrefab, transform.position, Quaternion.identity);
             cloneTarget = transform.position;
             lastTarget = move.targetPosition;
             active = true;
@@ -70,7 +70,7 @@ public class AbilityGolem : MonoBehaviour
     void cloneMove()
     {
 
-        direction = move.targetPosition-lastTarget ;
+        direction = move.targetPosition - lastTarget;
 
         if (!GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause
         && mazeLogic.maze[(int)cloneTarget.x - (int)direction.x, (int)cloneTarget.y - (int)direction.y] != 1

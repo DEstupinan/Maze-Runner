@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject target;
+    [HideInInspector] public GameObject target;
 
     public float speed;
-    public bool active;
+    [HideInInspector] public bool active;
 
 
- void Start()
- {
-    transform.position=new Vector3(GameObject.FindGameObjectWithTag("Player1").transform.position.x,GameObject.FindGameObjectWithTag("Player1").transform.position.y,-10);
- }
+    void Start()
+    {
+        transform.position = new Vector3(GameObject.FindGameObjectWithTag("Player1").transform.position.x, GameObject.FindGameObjectWithTag("Player1").transform.position.y, -10);
+    }
 
     void MoveCamera()
     {

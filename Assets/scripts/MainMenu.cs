@@ -4,7 +4,7 @@ using TMPro;
 
 
 public class MainMenu : MonoBehaviour
-{   
+{
     public GameObject encyclopedia;
     public TMP_Text description;
     public void Play()
@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("PlayersNumber");
     }
     public void Encyclopedia()
-    {   
+    {
         description.text = "";
         encyclopedia.SetActive(true);
     }

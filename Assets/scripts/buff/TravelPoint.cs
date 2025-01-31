@@ -7,7 +7,7 @@ public class TravelPoint : MonoBehaviour
     private GameObject affected;
     private MazeLogic mazeLogic;
     private bool aux;
-    public bool active = false;
+    [HideInInspector] public bool active = false;
 
 
 

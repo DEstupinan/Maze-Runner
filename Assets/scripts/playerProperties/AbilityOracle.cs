@@ -10,7 +10,7 @@ public class AbilityOracle : MonoBehaviour
     private Light2D lightV;
     private Move move;
     private int count;
-    public bool active = false;
+    [HideInInspector] public bool active = false;
 
     void Start()
     {

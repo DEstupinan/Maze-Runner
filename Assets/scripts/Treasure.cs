@@ -6,21 +6,21 @@ using UnityEngine.SceneManagement;
 public class Treasure : MonoBehaviour
 {
     private TurnManager turnManager;
-    private bool used=false;
-    public string winnerN="";
+    private bool used = false;
+    [HideInInspector] public string winnerN = "";
     void Start()
     {
         turnManager = FindAnyObjectByType<TurnManager>();
     }
     void Update()
     {
-        if (!used &&turnManager.currentPT.transform.position == transform.position && !turnManager.currentPT.GetComponent<Move>().isMoving
+        if (!used && turnManager.currentPT.transform.position == transform.position && !turnManager.currentPT.GetComponent<Move>().isMoving
        && !FindAnyObjectByType<UIMain>().isInPause)
-        {   
-            used=true;
-            winnerN=turnManager.currentPT.tag;
-           FindAnyObjectByType<UIMain>().End();
-           
+        {
+            used = true;
+            winnerN = turnManager.currentPT.tag;
+            FindAnyObjectByType<UIMain>().End();
+
         }
     }
 }

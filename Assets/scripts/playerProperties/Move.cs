@@ -6,11 +6,11 @@ public class Move : MonoBehaviour
     public float speed = 2;
     public int moveAvailable;
     [SerializeField] private int moveInitial;
-    public Vector2 targetPosition;
+    [HideInInspector] public Vector2 targetPosition;
     private MazeLogic maze;
-    public bool isMoving = false;
-    Vector2 input;
-    Vector2 lastInput;
+    [HideInInspector] public bool isMoving = false;
+    private Vector2 input;
+    private Vector2 lastInput;
 
 
     void Start()
@@ -57,7 +57,7 @@ public class Move : MonoBehaviour
                 isMoving = false;
             }
         }
-        
+
         if (moveAvailable == 0 && !isMoving)
         {
             this.enabled = false;

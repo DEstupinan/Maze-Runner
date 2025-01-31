@@ -9,22 +9,22 @@ using UnityEngine.Rendering.Universal;
 public class Status : MonoBehaviour
 {
 
-    public bool paralysis = false;
-    public int count = 0;
-    private bool used = false;
-    public bool bomb = false;
-    public bool torch = false;
-    public bool selectionMode = false;
-    public bool abilityActive = false;
-    public int slot = 0;
+    [HideInInspector] public bool paralysis = false;
+    [HideInInspector] public int count = 0;
+    [HideInInspector] private bool used = false;
+    [HideInInspector] public bool bomb = false;
+    [HideInInspector] public bool torch = false;
+    [HideInInspector] public bool selectionMode = false;
+    [HideInInspector] public bool abilityActive = false;
+    [HideInInspector] public int slot = 0;
 
-    public bool refresh = false;
-    public bool buff = false;
-    public bool blind = false;
+    [HideInInspector] public bool refresh = false;
+    [HideInInspector] public bool buff = false;
+    [HideInInspector] public bool blind = false;
     public float initialVision = 3.5f;
 
     public int abilityCoolDown = 0;
-    public int turnCount = 0;
+    [HideInInspector] public int turnCount = 0;
     private TurnManager turn;
 
     void Start()

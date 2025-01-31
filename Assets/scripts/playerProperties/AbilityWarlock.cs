@@ -5,8 +5,8 @@ using UnityEngine;
 public class AbilityWarlock : MonoBehaviour
 {
     public int coolDown = 1;
-    int x;
-    int y;
+    private int x;
+    private int y;
     [SerializeField] private GameObject trapPrefab;
     private GameObject trap;
     private TurnManager turn;

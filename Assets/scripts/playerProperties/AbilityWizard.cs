@@ -14,10 +14,10 @@ public class AbilityWizard : MonoBehaviour
     private GameObject portal;
     private GameObject portalTarget;
     private MazeLogic mazeR;
-    public bool active { get; private set; } = false;
-    Vector2 input;
-    Vector2 lastInput = Vector2.zero;
-    public Vector2 targetPosition;
+    [HideInInspector] public bool active = false;
+    private Vector2 input;
+    private Vector2 lastInput = Vector2.zero;
+    [HideInInspector] public Vector2 targetPosition;
 
     void Start()
     {

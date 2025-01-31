@@ -11,9 +11,9 @@ public class MazeLogic : MonoBehaviour
     private int centerX;
     private int centerY;
     private Vector2Int bestPosition;
-    public int blockRange = 9;
+    public int blockRange = 11;
     public GameObject wallPrefab, treasurePrefab, bombRoadPrefab, TravelPointPrefab;
-    public List<Vector3> TravelPointList;
+    [HideInInspector] public List<Vector3> TravelPointList;
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<GameObject> Roads;
     public List<GameObject> Walls;
@@ -22,9 +22,9 @@ public class MazeLogic : MonoBehaviour
 
     public List<int> buff = new List<int>();
 
-    public int[,] maze;
-    public GameObject[,] mazeObject;
-    public List<Transform> players;
+    [HideInInspector] public int[,] maze;
+    [HideInInspector] public GameObject[,] mazeObject;
+    [HideInInspector] public List<Transform> players;
     private GameManager gameManager;
 
     private List<Vector2Int> directions = new List<Vector2Int>
@@ -177,7 +177,7 @@ public class MazeLogic : MonoBehaviour
         for (int x = 0; x < row; x++)
             for (int y = 0; y < col; y++)
             {
-                if (x == 0 || y == 0 || x == col-1 || y == row-1) maze[x, y] = -1;
+                if (x == 0 || y == 0 || x == col - 1 || y == row - 1) maze[x, y] = -1;
             }
         bool Check(int x, int y)
         {

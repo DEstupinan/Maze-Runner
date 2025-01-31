@@ -25,7 +25,7 @@ public class Spawn : MonoBehaviour
             int indexList = PlayerPrefs.GetInt($"Player{x}Index");
             int spawnPosition = Random.Range(0, position.Count);
             player[x] = Instantiate(GameManager.Instance.characters[indexList].player, position[spawnPosition], Quaternion.identity);
-           
+
             position.RemoveAt(spawnPosition);
             player[x].tag = $"Player{x + 1}";
         }

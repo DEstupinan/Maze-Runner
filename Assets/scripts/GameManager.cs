@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Players> characters;
-    public int playerCount = 2;
-       private void Awake()
+    [HideInInspector] public int playerCount = 2;
+    private void Awake()
     {
         if (GameManager.Instance == null)
         {

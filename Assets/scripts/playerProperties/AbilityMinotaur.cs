@@ -18,10 +18,10 @@ public class AbilityMinotaur : MonoBehaviour
         && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
             GetComponent<Status>().abilityCoolDown = coolDown;
-            if(!move.enabled)move.enabled=true;
-            if (GetComponent<Status>().paralysis)GetComponent<Status>().paralysis=false;
-            
-                move.moveAvailable += power;
+            if (!move.enabled) move.enabled = true;
+            if (GetComponent<Status>().paralysis) GetComponent<Status>().paralysis = false;
+
+            move.moveAvailable += power;
 
 
         }
