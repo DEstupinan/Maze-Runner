@@ -22,7 +22,7 @@ public class TravelPoint : MonoBehaviour
         aux = true;
         if (!active && !turn.currentPT.GetComponent<Status>().selectionMode &&
         turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && Input.GetKeyDown(KeyCode.F)
-         && !FindAnyObjectByType<interfazBoton>().isInPause)
+         && !FindAnyObjectByType<UIMain>().isInPause)
         {
             active = true;
 
@@ -35,34 +35,34 @@ public class TravelPoint : MonoBehaviour
         }
         if (active)
         {
-            if (Input.GetKeyDown(KeyCode.D) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.D) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 affected.transform.position = mazeLogic.TravelPointList[3];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.A) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.A) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 affected.transform.position = mazeLogic.TravelPointList[0];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.S) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.S) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 affected.transform.position = mazeLogic.TravelPointList[1];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.W) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.W) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 affected.transform.position = mazeLogic.TravelPointList[2];
                 affected.GetComponent<Move>().targetPosition = affected.transform.position;
             }
-            if (Input.GetKeyDown(KeyCode.F) && aux && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.F) && aux && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 active = false;
                 affected.GetComponent<Move>().enabled = true;
 
                 Invoke("Disable", 0.01f);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 active = false;
                 affected.GetComponent<Status>().selectionMode = false;

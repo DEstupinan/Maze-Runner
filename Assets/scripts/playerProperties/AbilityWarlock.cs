@@ -24,7 +24,7 @@ public class AbilityWarlock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
         && gameObject == turn.currentPT && mazeR.maze[(int)transform.position.x, (int)transform.position.y] == 0
-        && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
             GetComponent<Status>().abilityCoolDown = coolDown;
             while (true)
@@ -44,7 +44,7 @@ public class AbilityWarlock : MonoBehaviour
             mazeR.maze[x, y] = 3;
 
         }
-        if (used && Input.GetKeyDown(KeyCode.Space) && !move.isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (used && Input.GetKeyDown(KeyCode.Space) && !move.isMoving && !FindAnyObjectByType<UIMain>().isInPause)
         {
             used = false;
             trap.GetComponent<SpriteRenderer>().enabled = false;

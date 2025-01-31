@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 117671730}
   - component: {fileID: 117671729}
   m_Layer: 5
-  m_Name: VictoriaText
+  m_Name: EndText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 520967238}
   - component: {fileID: 520967237}
   m_Layer: 5
-  m_Name: Desplegar Controles
+  m_Name: ControlsDeploy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1009,8 +1009,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169789294}
-        m_TargetAssemblyTypeName: interfazBoton, Assembly-CSharp
-        m_MethodName: Salir
+        m_TargetAssemblyTypeName: UIMain, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2032,7 +2032,7 @@ MonoBehaviour:
   cameraF: {fileID: 775193288}
   currentPT: {fileID: 0}
   textCurrentPT: {fileID: 1086687396}
-  textMoveAvaible: {fileID: 1670140211}
+  textMoveAvailable: {fileID: 1670140211}
   textAbilityCoolDown: {fileID: 838045002}
   textBuff: {fileID: 1074109742}
   textStatus: {fileID: 572899490}
@@ -3119,7 +3119,7 @@ GameObject:
   - component: {fileID: 1305539756}
   - component: {fileID: 1305539755}
   m_Layer: 5
-  m_Name: VerMapa
+  m_Name: SeeMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3252,7 +3252,7 @@ GameObject:
   - component: {fileID: 1324144060}
   - component: {fileID: 1324144059}
   m_Layer: 5
-  m_Name: Reanudar
+  m_Name: Resume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3323,8 +3323,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169789294}
-        m_TargetAssemblyTypeName: interfazBoton, Assembly-CSharp
-        m_MethodName: Reanudar
+        m_TargetAssemblyTypeName: UIMain, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4227,8 +4227,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169789294}
-        m_TargetAssemblyTypeName: interfazBoton, Assembly-CSharp
-        m_MethodName: cambiarP
+        m_TargetAssemblyTypeName: UIMain, Assembly-CSharp
+        m_MethodName: ChangeP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4542,8 +4542,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169789294}
-        m_TargetAssemblyTypeName: interfazBoton, Assembly-CSharp
-        m_MethodName: Reiniciar
+        m_TargetAssemblyTypeName: UIMain, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 2118701917}
   - component: {fileID: 2118701916}
   m_Layer: 5
-  m_Name: Desplegar Status
+  m_Name: StatusDeploy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4807,8 +4807,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 169789294}
-        m_TargetAssemblyTypeName: interfazBoton, Assembly-CSharp
-        m_MethodName: MenuP
+        m_TargetAssemblyTypeName: UIMain, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

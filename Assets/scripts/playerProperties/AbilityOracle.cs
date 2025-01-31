@@ -21,7 +21,7 @@ public class AbilityOracle : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
-        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
 
             lightV.pointLightOuterRadius = power;
@@ -49,8 +49,8 @@ public class AbilityOracle : MonoBehaviour
                 lightV.pointLightOuterRadius = GetComponent<Status>().initialVision;
                 active = false;
                 GetComponent<Status>().abilityActive = false;
-                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().reserva;
-                GetComponent<Status>().reserva = 0;
+                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().slot;
+                GetComponent<Status>().slot = 0;
             }
         }
 

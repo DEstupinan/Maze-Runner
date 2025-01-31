@@ -33,7 +33,7 @@ public class Move : MonoBehaviour
             lastInput = input;
 
 
-            if ((input.x != 0 ^ input.y != 0) && !isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if ((input.x != 0 ^ input.y != 0) && !isMoving && !FindAnyObjectByType<UIMain>().isInPause)
             {
 
                 int x = (int)transform.position.x;

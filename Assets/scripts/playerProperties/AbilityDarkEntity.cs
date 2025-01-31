@@ -23,7 +23,7 @@ public class AbilityDarkEntity : MonoBehaviour
         aux = true;
         if (!active && Input.GetKeyDown(KeyCode.E) && !move.isMoving
         && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT
-        && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
             cruz = Instantiate(cruzPrefab, transform.position, Quaternion.identity);
             active = true;
@@ -34,22 +34,22 @@ public class AbilityDarkEntity : MonoBehaviour
         {
             if (gameObject != turn.currentPT) cruz.SetActive(false);
             else cruz.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Q) && gameObject == turn.currentPT && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.Q) && gameObject == turn.currentPT && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 active = false;
                 Destroy(cruz);
                 GetComponent<Status>().abilityActive = false;
-                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().reserva;
-                GetComponent<Status>().reserva = 0;
+                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().slot;
+                GetComponent<Status>().slot = 0;
             }
-            if (aux && Input.GetKeyDown(KeyCode.E) && gameObject == turn.currentPT && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (aux && Input.GetKeyDown(KeyCode.E) && gameObject == turn.currentPT && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 transform.position = cruz.transform.position;
                 GetComponent<Move>().targetPosition = transform.position;
                 active = false;
                 GetComponent<Status>().abilityActive = false;
-                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().reserva;
-                GetComponent<Status>().reserva = 0;
+                GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().slot;
+                GetComponent<Status>().slot = 0;
                 Destroy(cruz);
             }
         }

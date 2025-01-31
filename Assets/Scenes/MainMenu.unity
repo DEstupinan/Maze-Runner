@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 183473217}
   - component: {fileID: 183473216}
   m_Layer: 5
-  m_Name: Enciclopedia_Button
+  m_Name: Encyclopedia_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,7 +1150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2125393905}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Enciclopedia
+        m_MethodName: Encyclopedia
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 574601503}
   - component: {fileID: 574601502}
   m_Layer: 5
-  m_Name: Descripcion
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2885,7 +2885,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2125393905}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Exit
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3509,7 +3509,7 @@ GameObject:
   - component: {fileID: 994810512}
   - component: {fileID: 994810515}
   m_Layer: 5
-  m_Name: Enciclopedia
+  m_Name: Encyclopedia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6896,7 +6896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da78eb0d9b00cf74caf72167959e4df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enciclopedia: {fileID: 994810511}
+  encyclopedia: {fileID: 0}
   description: {fileID: 493379413}
 --- !u!224 &2137928268
 RectTransform:

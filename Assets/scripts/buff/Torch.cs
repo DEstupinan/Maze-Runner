@@ -14,7 +14,7 @@ public class Torch : MonoBehaviour
     void Update()
     {
         if (turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Status>().buff
-        && Input.GetKeyDown(KeyCode.F) && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && Input.GetKeyDown(KeyCode.F) && !FindAnyObjectByType<UIMain>().isInPause)
         {
             turn.currentPT.GetComponent<Status>().torch = true;
             turn.currentPT.GetComponent<Status>().buff = true;

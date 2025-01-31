@@ -28,7 +28,7 @@ public class AbilityWizard : MonoBehaviour
     void Update()
     {
         if (!active && Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0
-        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
             active = true;
             GetComponent<Status>().selectionMode = true;
@@ -42,7 +42,7 @@ public class AbilityWizard : MonoBehaviour
         {
             ActiveAbility();
         }
-        if (portal != null && Input.GetKeyDown(KeyCode.Space) && !GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (portal != null && Input.GetKeyDown(KeyCode.Space) && !GetComponent<Move>().isMoving && !FindAnyObjectByType<UIMain>().isInPause)
         {
             mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 1;
             if (transform.position != portal.transform.position)
@@ -58,14 +58,14 @@ public class AbilityWizard : MonoBehaviour
     void ActiveAbility()
     {
         GetComponent<Move>().enabled = false;
-        if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<UIMain>().isInPause)
         {
             active = false;
             GetComponent<Status>().selectionMode = false;
             Destroy(portalTarget);
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (Input.GetKeyDown(KeyCode.Q) && !FindAnyObjectByType<UIMain>().isInPause)
         {
             GetComponent<Move>().enabled = true;
             active = false;
@@ -91,7 +91,7 @@ public class AbilityWizard : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyDown(KeyCode.E) && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (Input.GetKeyDown(KeyCode.E) && !FindAnyObjectByType<UIMain>().isInPause)
         {
             if (mazeR.GetValue((int)targetPosition.x, (int)targetPosition.y) == 1)
             {

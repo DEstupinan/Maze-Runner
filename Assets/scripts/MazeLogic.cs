@@ -17,7 +17,7 @@ public class MazeLogic : MonoBehaviour
     public List<GameObject> trapsPrefab, inevitableTrapPrefabs;
     public List<GameObject> Roads;
     public List<GameObject> Walls;
-    public List<int> traps = new List<int> { 2, 2, 2 };
+    public List<int> traps = new List<int> { 4, 4, 4 };
     public List<GameObject> buffPrefab;
 
     public List<int> buff = new List<int>();

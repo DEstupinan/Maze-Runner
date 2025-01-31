@@ -35,7 +35,7 @@ public class trapVision : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
+            if (Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving && !FindAnyObjectByType<UIMain>().isInPause)
             {
 
                 GetComponent<SpriteRenderer>().enabled = false;

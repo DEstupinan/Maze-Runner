@@ -15,11 +15,11 @@ public class Treasure : MonoBehaviour
     void Update()
     {
         if (!used &&turnManager.currentPT.transform.position == transform.position && !turnManager.currentPT.GetComponent<Move>().isMoving
-       && !FindAnyObjectByType<interfazBoton>().isInPause)
+       && !FindAnyObjectByType<UIMain>().isInPause)
         {   
             used=true;
             winnerN=turnManager.currentPT.tag;
-           FindAnyObjectByType<interfazBoton>().End();
+           FindAnyObjectByType<UIMain>().End();
            
         }
     }

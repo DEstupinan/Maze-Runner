@@ -5,16 +5,16 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {   
-    public GameObject enciclopedia;
+    public GameObject encyclopedia;
     public TMP_Text description;
     public void Play()
     {
         SceneManager.LoadScene("PlayersNumber");
     }
-    public void Enciclopedia()
+    public void Encyclopedia()
     {   
         description.text = "";
-        enciclopedia.SetActive(true);
+        encyclopedia.SetActive(true);
     }
 
     public void Exit()
@@ -22,8 +22,8 @@ public class MainMenu : MonoBehaviour
 
         Application.Quit();
     }
-    public void Cerrar()
+    public void Close()
     {
-        enciclopedia.SetActive(false);
+        encyclopedia.SetActive(false);
     }
 }

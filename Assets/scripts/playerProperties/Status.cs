@@ -16,7 +16,7 @@ public class Status : MonoBehaviour
     public bool torch = false;
     public bool selectionMode = false;
     public bool abilityActive = false;
-    public int reserva = 0;
+    public int slot = 0;
 
     public bool refresh = false;
     public bool buff = false;
@@ -43,13 +43,13 @@ public class Status : MonoBehaviour
         }
         if (buff)
         {
-            if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
+            if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
             {
                 abilityCoolDown = 0;
                 refresh = false;
                 buff = false;
             }
-            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
+            if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
             {
 
                 bomb = false;
@@ -80,7 +80,7 @@ public class Status : MonoBehaviour
             }
             if (torch)
             {
-                if (!used && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<interfazBoton>().isInPause && gameObject == turn.currentPT)
+                if (!used && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
                 {
 
 

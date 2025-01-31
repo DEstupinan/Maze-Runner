@@ -6,18 +6,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<Players> characters;
     public int playerCount = 2;
-    private void Awake()
+       private void Awake()
     {
         if (GameManager.Instance == null)
         {
             GameManager.Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-
-
     }
 }

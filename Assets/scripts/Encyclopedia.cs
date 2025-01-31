@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Enciclopedia : MonoBehaviour
+public class Encyclopedia : MonoBehaviour
 {
     public TMP_Text description;
     public void Wizard()
@@ -22,11 +22,11 @@ public class Enciclopedia : MonoBehaviour
     }
     public void DarkEntity()
     {
-        description.text = "Entidad desconocida investigada por brujos y hechizeros. Se cree que puede fragmentar su alma y moverse entre dimensiones.\n\nHabilidad: Crea una marca en el camino actual a la que puede teletransportarse. La marca aporta visión durante su turno y no desaparecerá hasta que se use o cancele. NO cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
+        description.text = "Entidad desconocida investigada por brujos y hechizeros. Se cree que puede fragmentar su alma y moverse entre dimensiones.\n\nHabilidad: Crea una marca en el camino actual a la que puede teletransportarse. La marca aporta visión durante su turno y no desaparecerá hasta que se use o cancele. No cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
     }
     public void Golem()
     {
-        description.text = "Creación sin de ideas de los hechizeros para caseres domésticos. Una entidad oscura se fusionó con él.\n\nHabilidad: Crea un minigolem en al que puede teletransportarse. El minigolem aporta visión durante su turno y no desaparecerá hasta que se use o cancele. Además el minigolem es terco y se mueve en dirección opuesta al jugador. No cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
+        description.text = "Creación de los hechizeros para caseres domésticos. Una entidad oscura se fusionó con él.\n\nHabilidad: Crea un minigolem en al que puede teletransportarse. El minigolem aporta visión durante su turno y no desaparecerá hasta que se use o cancele. Además el minigolem es terco y se mueve en dirección opuesta al jugador. No cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
     }
     public void TrapBeard()
     {
@@ -58,11 +58,11 @@ public class Enciclopedia : MonoBehaviour
     }
     public void Rules()
     {
-      description.text="Al iniciar partida cada jugador elige el personaje deseado. Gana el primero en encontrar el tesoro ubicado en la zona central. Solo durante su turno el jugador puede moverse si tiene pasos disponibles, usar su habilidad si no está inhabilitada, recoger y usar objetos y pasar cuando esté listo. Los controles están visibles en el hud desplegable durante la partida.";
+      description.text="Al iniciar partida cada jugador elige el personaje deseado. Gana el primero en encontrar el tesoro ubicado en la zona central. Solo durante su turno el jugador puede moverse si tiene pasos disponibles, usar su habilidad si no está inhabilitada, recoger/usar objetos y pasar cuando esté listo. Los controles están visibles en el hud desplegable durante la partida.";
     }
     public void Rules2()
     {
-        description.text="A diferencia de los objetos las trampas estan ocultas hasta su activación. No se puede traspasar las paredes en condiciones normales. Al recoger un objeto no se puede recoger otro hasta que este se haya consumido o acabado su efecto. El orden de los turnos es el mismo que el orden al elegir personajes. Inicialmente todos tienen su habilidad en recarga por 3 turnos.";
+        description.text="A diferencia de los objetos, las trampas están ocultas hasta su activación. No se puede traspasar las paredes en condiciones normales. Al recoger un objeto no se puede recoger otro hasta que este se haya consumido o acabado su efecto. El orden de los turnos es el mismo que el orden al elegir personajes. Inicialmente todos tienen su habilidad en recarga por 3 turnos.";
     }
     public void Status()
     {

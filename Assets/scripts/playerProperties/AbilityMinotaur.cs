@@ -15,7 +15,7 @@ public class AbilityMinotaur : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
-        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
             GetComponent<Status>().abilityCoolDown = coolDown;
             if(!move.enabled)move.enabled=true;

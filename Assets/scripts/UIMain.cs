@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class interfazBoton : MonoBehaviour
+public class UIMain : MonoBehaviour
 {
     public GameObject status;
     public GameObject controls;
@@ -56,7 +56,7 @@ public class interfazBoton : MonoBehaviour
             pause.SetActive(false);
         }
     }
-    public void Reanudar()
+    public void Resume()
     {
         if (!finished)
         {
@@ -65,25 +65,25 @@ public class interfazBoton : MonoBehaviour
         }
         pause.SetActive(false);
     }
-    public void Reiniciar()
+    public void Retry()
     {
         isInPause = false;
         Time.timeScale = 1f;
         finished = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void cambiarP()
+    public void ChangeP()
     {
         isInPause = false;
         Time.timeScale = 1f;
         finished = false;
         SceneManager.LoadScene("CharacterSelection");
     }
-    public void Salir()
+    public void Quit()
     {
         Application.Quit();
     }
-    public void MenuP()
+    public void MainMenu()
     {
         isInPause = false;
         Time.timeScale = 1f;

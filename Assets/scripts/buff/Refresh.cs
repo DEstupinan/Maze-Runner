@@ -13,7 +13,7 @@ public class Refresh : MonoBehaviour
     void Update()
     {
         if (turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Status>().buff && Input.GetKeyDown(KeyCode.F)
-        && !FindAnyObjectByType<interfazBoton>().isInPause)
+        && !FindAnyObjectByType<UIMain>().isInPause)
         {
 
             turn.currentPT.GetComponent<Status>().refresh = true;

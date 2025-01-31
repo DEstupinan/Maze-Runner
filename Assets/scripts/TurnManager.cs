@@ -11,7 +11,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private CameraFollow cameraF;
     public GameObject currentPT;
     public TMP_Text textCurrentPT;
-    public TMP_Text textMoveAvaible;
+    public TMP_Text textMoveAvailable;
     public TMP_Text textAbilityCoolDown;
     public TMP_Text textBuff;
     public TMP_Text textStatus;
@@ -30,14 +30,7 @@ public class TurnManager : MonoBehaviour
     void Update()
     {
         Text();
-
-
-
-
-
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && !currentPT.GetComponent<Move>().isMoving && !FindAnyObjectByType<interfazBoton>().isInPause)
+        if (Input.GetKeyDown(KeyCode.Space) && !currentPT.GetComponent<Move>().isMoving && !FindAnyObjectByType<UIMain>().isInPause)
         {
             EndTurn();
         }
@@ -80,7 +73,7 @@ public class TurnManager : MonoBehaviour
     }
     void Text()
     {
-        textMoveAvaible.text = currentPT.GetComponent<Move>().moveAvailable.ToString();
+        textMoveAvailable.text = currentPT.GetComponent<Move>().moveAvailable.ToString();
         if (currentPT.GetComponent<Status>().abilityCoolDown == 0)
         {
             Color greenP;

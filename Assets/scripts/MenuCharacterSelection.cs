@@ -8,8 +8,8 @@ public class MenuCharacterSelection : MonoBehaviour
 {
     private int[] index;
     [SerializeField] private Image image;
-    [SerializeField] private TextMeshProUGUI nametext;
-    [SerializeField] private TextMeshProUGUI playerNumber;
+    [SerializeField] private TMP_Text nametext;
+    [SerializeField] private TMP_Text playerNumber;
     private GameManager gameManager;
     private int i = 0;
 
