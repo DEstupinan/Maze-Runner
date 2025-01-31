@@ -16,6 +16,7 @@ public class trapVision : MonoBehaviour
 
     void Update()
     {
+        //Requirements to be met to activate
         if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position
         && !turn.currentPT.GetComponent<Move>().isMoving && !activeEffect)
         {
@@ -30,7 +31,7 @@ public class trapVision : MonoBehaviour
         if (activeEffect)
         {
 
-
+            //removes the effect of the trap if the blindness is cleared
             if (!affected.GetComponent<Status>().blind)
             {
                 Destroy(gameObject);
@@ -42,7 +43,7 @@ public class trapVision : MonoBehaviour
             }
             if (count + duration == affected.GetComponent<Status>().turnCount)
             {
-
+                //if the duration of the trap has expired, remove its effect
                 affected.GetComponent<Status>().blind = false;
                 affected.GetComponent<Light2D>().pointLightOuterRadius = affected.GetComponent<Status>().initialVision;
                 Destroy(gameObject);

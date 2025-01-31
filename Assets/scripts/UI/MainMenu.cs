@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject encyclopedia;
     public TMP_Text description;
+    //Main Menu UI
     public void Play()
     {
         SceneManager.LoadScene("PlayersNumber");

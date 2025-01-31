@@ -14,7 +14,8 @@ public class CameraFollow : MonoBehaviour
     }
 
     void MoveCamera()
-    {
+    {   
+        //logic for the camera to follow the player who has the turn active taking reference from the turnmanager
         if (active && target)
         {
             Vector3 targetPosition = target.transform.position;

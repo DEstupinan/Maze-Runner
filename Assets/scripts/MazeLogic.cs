@@ -7,6 +7,7 @@ using Unity.Collections;
 
 public class MazeLogic : MonoBehaviour
 {
+    //Variable declaration
     public int row = 35, col = 35;
     private int centerX;
     private int centerY;
@@ -38,8 +39,8 @@ public class MazeLogic : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
+        //Saving the Player's Transform to a List
         players = new List<Transform>();
-
         for (int x = 0; x < gameManager.playerCount; x++)
         {
             players.Add(GameObject.FindGameObjectWithTag($"Player{x + 1}").transform);
@@ -47,6 +48,7 @@ public class MazeLogic : MonoBehaviour
 
         centerX = row / 2;
         centerY = col / 2;
+        //Calling Methods of generation
         GenerateMaze();
         DrawMaze();
         PlaceTreasure();
@@ -58,12 +60,14 @@ public class MazeLogic : MonoBehaviour
 
     void GenerateMaze()
     {
+        //Filling in the maze of walls initially (1 represents wall 0 represents path)
         maze = new int[row, col];
         mazeObject = new GameObject[row, col];
         for (int i = 0; i < row; i++)
             for (int j = 0; j < col; j++)
                 maze[i, j] = 1;
 
+        //Select an odd random position to start cabling
         int startX = URandom.Range(1, (row - 1) / 2) * 2 + 1;
         int startY = URandom.Range(1, (col - 1) / 2) * 2 + 1;
 
@@ -72,9 +76,9 @@ public class MazeLogic : MonoBehaviour
 
     void CarvePath(int x, int y)
     {
+        //Creates path in the initial position
         maze[x, y] = 0;
-
-
+        //creating a list of addresses and calling the Shuffle method to mess them up
         List<Vector2Int> directions = new List<Vector2Int>
         {
             new Vector2Int(0, 2),
@@ -88,15 +92,18 @@ public class MazeLogic : MonoBehaviour
         {
             int nextX = x + dir.x;
             int nextY = y + dir.y;
-
+            //Verify that the box to look at is valid
             if (nextX > 0 && nextX < row && nextY > 0 && nextY < col && maze[nextX, nextY] == 1)
             {
+                /*The algorithm checks if in the current direction, two squares ahead there is a wall,
+                 in that case it creates a path in the middle square */
                 maze[x + dir.x / 2, y + dir.y / 2] = 0;
+                //Recursive call
                 CarvePath(nextX, nextY);
             }
         }
     }
-
+    //Method for Instantaneous Gamobjects in Matrix Positions
     void DrawMaze()
     {
         for (int x = 0; x < row; x++)
@@ -106,6 +113,7 @@ public class MazeLogic : MonoBehaviour
 
                 if (maze[x, y] == 1)
                 {
+                    //possible cases to determine the corresponding wall sprite
                     if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Walls[0], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (Check(x, y) && maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[1], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (Check(x, y) && maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Walls[2], new Vector3(x, y, 0), Quaternion.identity, transform);
@@ -125,6 +133,7 @@ public class MazeLogic : MonoBehaviour
                 }
                 if (!Check(x, y))
                 {
+                    //possible cases to determine the corresponding edge wall sprite
                     if (x == 0 && y != 0 && y != row - 1)
                     {
                         if (maze[x + 1, y] == 0) mazeObject[x, y] = Instantiate(Walls[1], new Vector3(x, y, 0), Quaternion.identity, transform);
@@ -151,6 +160,7 @@ public class MazeLogic : MonoBehaviour
 
                 if (maze[x, y] == 0)
                 {
+                    //possible cases to determine the corresponding road sprite
                     if (maze[x + 1, y] == 0 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 1) mazeObject[x, y] = Instantiate(Roads[0], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (maze[x + 1, y] == 1 && maze[x - 1, y] == 1 && maze[x, y + 1] == 0 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[1], new Vector3(x, y, 0), Quaternion.identity, transform);
                     if (maze[x + 1, y] == 1 && maze[x - 1, y] == 0 && maze[x, y + 1] == 1 && maze[x, y - 1] == 0) mazeObject[x, y] = Instantiate(Roads[2], new Vector3(x, y, 0), Quaternion.identity, transform);
@@ -170,6 +180,7 @@ public class MazeLogic : MonoBehaviour
 
 
             }
+        //corner sprites
         mazeObject[0, 0] = Instantiate(Walls[5], new Vector3(0, 0, 0), Quaternion.identity, transform);
         mazeObject[0, row - 1] = Instantiate(Walls[3], new Vector3(0, row - 1, 0), Quaternion.identity, transform);
         mazeObject[col - 1, 0] = Instantiate(Walls[6], new Vector3(col - 1, 0, 0), Quaternion.identity, transform);
@@ -189,7 +200,8 @@ public class MazeLogic : MonoBehaviour
     {
         return maze[i, j];
     }
-
+    /*method for instantiating the treasure into a valid position of 
+    the central block that is at the most balanced possible position with respect to the players*/
     void PlaceTreasure()
     {
         List<int[,]> distances = new List<int[,]>();
@@ -271,6 +283,8 @@ public class MazeLogic : MonoBehaviour
 
     void PlaceTrap()
     {
+        /*Method for instantiating the traps in a distributed manner and in the five central blocks of the
+         labyrinth until the desired quantity is completed*/
         List<Vector2Int> blocksCenter = new List<Vector2Int>
         {
             new Vector2Int(centerX - blockRange, centerY),
@@ -309,7 +323,7 @@ public class MazeLogic : MonoBehaviour
         PlaceInevitableTrap();
     }
     void PlaceInevitableTrap()
-    {
+    { //Method for instantiating traps on each player's closest path to the finish line
         if (inevitableTrapPrefabs.Count() == 0) return;
         int[,] playerDistances = BFS(bestPosition.x, bestPosition.y);
 
@@ -339,7 +353,8 @@ public class MazeLogic : MonoBehaviour
 
     }
     List<Vector2Int> FindShortTrip(Vector2Int start, Vector2Int end, int[,] d)
-    {
+    {   
+        //Find the nearest way and save your positions in a list to insure the traps in them
         List<Vector2Int> shortTrip = new List<Vector2Int>();
         shortTrip.Add(end);
 
@@ -371,7 +386,8 @@ public class MazeLogic : MonoBehaviour
         return shortTrip;
     }
     void PlaceBuff()
-    {
+    {   
+        //method that instantiates buffs the 4 central blocks (not taking into account the center and corners)
         List<Vector2Int> blocksCenter = new List<Vector2Int>
         {
             new Vector2Int(centerX - blockRange, centerY),
@@ -408,7 +424,8 @@ public class MazeLogic : MonoBehaviour
         }
     }
     void PlaceTravelPoint()
-    {
+    {   
+        //method to instantiate the portals in the same blocks as buff them but making sure that it is at the ends
         List<Vector2Int> blocksCenter = new List<Vector2Int>
         {
             new Vector2Int(2, centerY),

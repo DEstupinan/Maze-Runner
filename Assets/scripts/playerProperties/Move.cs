@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Move : MonoBehaviour
 {
+    //Script for Player Cell Movement
     public float speed = 2;
     public int moveAvailable;
     [SerializeField] private int moveInitial;
@@ -59,7 +60,7 @@ public class Move : MonoBehaviour
         }
 
         if (moveAvailable == 0 && !isMoving)
-        {
+        {//If there are no movements available, disable this component
             this.enabled = false;
 
         }
@@ -67,6 +68,7 @@ public class Move : MonoBehaviour
     }
     public void ResetMoves()
     {
+        //Method to reset available movements
         moveAvailable = moveInitial;
         lastInput = Vector2.zero;
         targetPosition = transform.position;

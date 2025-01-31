@@ -6,8 +6,8 @@ public class AbilityDarkEntity : MonoBehaviour
 
     private TurnManager turn;
     private MazeLogic mazeLogic;
-    [SerializeField] private GameObject cruzPrefab;
-    private GameObject cruz;
+    [SerializeField] private GameObject markPrefab;
+    private GameObject mark;
 
     private Move move;
     private bool aux;
@@ -20,37 +20,39 @@ public class AbilityDarkEntity : MonoBehaviour
     }
     void Update()
     {
+        ////Requirements to be met to activate
         aux = true;
         if (!active && Input.GetKeyDown(KeyCode.E) && !move.isMoving
         && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT
         && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
-            cruz = Instantiate(cruzPrefab, transform.position, Quaternion.identity);
+            mark = Instantiate(markPrefab, transform.position, Quaternion.identity);
             active = true;
             GetComponent<Status>().abilityActive = true;
             aux = false;
         }
         if (active)
-        {
-            if (gameObject != turn.currentPT) cruz.SetActive(false);
-            else cruz.SetActive(true);
+        {   
+            //logic to cancel the ability or to teleport to the mark
+            if (gameObject != turn.currentPT) mark.SetActive(false);
+            else mark.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Q) && gameObject == turn.currentPT && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 active = false;
-                Destroy(cruz);
+                Destroy(mark);
                 GetComponent<Status>().abilityActive = false;
                 GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().slot;
                 GetComponent<Status>().slot = 0;
             }
             if (aux && Input.GetKeyDown(KeyCode.E) && gameObject == turn.currentPT && !FindAnyObjectByType<UIMain>().isInPause)
             {
-                transform.position = cruz.transform.position;
+                transform.position = mark.transform.position;
                 GetComponent<Move>().targetPosition = transform.position;
                 active = false;
                 GetComponent<Status>().abilityActive = false;
                 GetComponent<Status>().abilityCoolDown += coolDown + GetComponent<Status>().slot;
                 GetComponent<Status>().slot = 0;
-                Destroy(cruz);
+                Destroy(mark);
             }
         }
 

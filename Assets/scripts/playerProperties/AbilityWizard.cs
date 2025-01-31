@@ -27,9 +27,11 @@ public class AbilityWizard : MonoBehaviour
     }
     void Update()
     {
+        //Requirements to be met to activate
         if (!active && Input.GetKeyDown(KeyCode.E) && !GetComponent<Move>().isMoving && GetComponent<Status>().abilityCoolDown == 0
         && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
+            //Enter Selection Mode and Prepare the cursor
             active = true;
             GetComponent<Status>().selectionMode = true;
             targetPosition = transform.position;
@@ -41,7 +43,8 @@ public class AbilityWizard : MonoBehaviour
         if (active)
         {
             ActiveAbility();
-        }
+        }   
+        //Logic to destroy the portal at the end of the turn but making sure that the player does not find himself in it
         if (portal != null && Input.GetKeyDown(KeyCode.Space) && !GetComponent<Move>().isMoving && !FindAnyObjectByType<UIMain>().isInPause)
         {
             mazeR.maze[(int)targetPosition.x, (int)targetPosition.y] = 1;
@@ -56,7 +59,8 @@ public class AbilityWizard : MonoBehaviour
 
     }
     void ActiveAbility()
-    {
+    {   
+        //Ability function
         GetComponent<Move>().enabled = false;
         if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<UIMain>().isInPause)
         {
@@ -73,7 +77,7 @@ public class AbilityWizard : MonoBehaviour
             Destroy(portalTarget);
             return;
         }
-
+    //here use the input to select where the portal will be generated
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
         if (input != lastInput)
@@ -92,7 +96,8 @@ public class AbilityWizard : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.E) && !FindAnyObjectByType<UIMain>().isInPause)
-        {
+        {   
+            //if it is confirmed, it generates the portal and enables the movement through it
             if (mazeR.GetValue((int)targetPosition.x, (int)targetPosition.y) == 1)
             {
                 portal = Instantiate(portalPrefab, new Vector3(targetPosition.x, targetPosition.y, 0), Quaternion.identity);

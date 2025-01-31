@@ -22,10 +22,12 @@ public class AbilityWarlock : MonoBehaviour
     }
     void Update()
     {
+        //Requirements to be met to activate
         if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
         && gameObject == turn.currentPT && mazeR.maze[(int)transform.position.x, (int)transform.position.y] == 0
         && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
+            //Insance your trap in a random position
             GetComponent<Status>().abilityCoolDown = coolDown;
             while (true)
             {

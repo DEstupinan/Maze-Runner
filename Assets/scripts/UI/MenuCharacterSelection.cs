@@ -14,7 +14,7 @@ public class MenuCharacterSelection : MonoBehaviour
     private int i = 0;
 
     private void Start()
-    {
+    {   //In this script there are buttons to toggle between characters and save the selection of players to take it to the next scene
         gameManager = GameManager.Instance;
         index = new int[gameManager.playerCount];
         index[i] = PlayerPrefs.GetInt($"Player{i}Index");

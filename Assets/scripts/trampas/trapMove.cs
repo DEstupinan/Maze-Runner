@@ -15,6 +15,7 @@ public class trapMove : MonoBehaviour
 
     void Update()
     {
+        //Requirements to be met to activate
         if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
         {
             used = true;
@@ -28,6 +29,7 @@ public class trapMove : MonoBehaviour
         {
             if (count + effect == affected.GetComponent<Status>().turnCount)
             {
+                //if the duration of the trap has expired, remove its effect
                 affected.GetComponent<Status>().paralysis = false;
                 affected.GetComponent<Move>().ResetMoves();
                 Destroy(gameObject);

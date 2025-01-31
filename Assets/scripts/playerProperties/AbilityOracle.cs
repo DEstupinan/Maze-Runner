@@ -20,6 +20,7 @@ public class AbilityOracle : MonoBehaviour
     }
     void Update()
     {
+        //Requirements to be met to activate
         if (Input.GetKeyDown(KeyCode.E) && !move.isMoving && GetComponent<Status>().abilityCoolDown == 0
         && gameObject == turn.currentPT && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
@@ -36,7 +37,8 @@ public class AbilityOracle : MonoBehaviour
 
         }
         if (active)
-        {
+        {   
+            //Logic to disable the ability when its duration expires or when blinded
             if (GetComponent<Status>().blind)
             {
                 active = false;

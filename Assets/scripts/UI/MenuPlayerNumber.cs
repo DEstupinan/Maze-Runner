@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 public class MenuPlayerNumber : MonoBehaviour
 {
     private GameManager gameManager;
-
+    //UI to select the number of players
     private void Start()
     {
         gameManager = GameManager.Instance;

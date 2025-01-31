@@ -3,6 +3,7 @@ using TMPro;
 
 public class Encyclopedia : MonoBehaviour
 {
+    //Information and operation of the encyclopedia
     public TMP_Text description;
     public void Wizard()
     {

@@ -21,7 +21,8 @@ public class Spawn : MonoBehaviour
         gameManager = GameManager.Instance;
 
         for (int x = 0; x < gameManager.playerCount; x++)
-        {
+        {   
+            // instantiate players in random corners and assign them their tag
             int indexList = PlayerPrefs.GetInt($"Player{x}Index");
             int spawnPosition = Random.Range(0, position.Count);
             player[x] = Instantiate(GameManager.Instance.characters[indexList].player, position[spawnPosition], Quaternion.identity);

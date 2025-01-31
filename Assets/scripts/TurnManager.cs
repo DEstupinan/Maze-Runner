@@ -39,7 +39,8 @@ public class TurnManager : MonoBehaviour
 
     private void StartTurn()
     {
-
+        //Logic to start turn, a counter carries the index of the player who must have the active turn, 
+        //his movement is activated, light and his cooldown is discounted
         currentPT = GameObject.FindGameObjectWithTag($"Player{currentPlayerIndex + 1}");
         tagPT = $"{currentPlayerIndex + 1}";
         textCurrentPT.text = tagPT;
@@ -63,7 +64,7 @@ public class TurnManager : MonoBehaviour
 
     private void EndTurn()
     {
-
+        //At the end of the shift, its light and movement are deactivated
         currentPT.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
         currentPT.GetComponent<Move>().enabled = false;
         currentPT.GetComponent<Light2D>().enabled = false;
@@ -72,7 +73,8 @@ public class TurnManager : MonoBehaviour
         StartTurn();
     }
     void Text()
-    {
+    {   
+        //Method for updating UI texts
         textMoveAvailable.text = currentPT.GetComponent<Move>().moveAvailable.ToString();
         if (currentPT.GetComponent<Status>().abilityCoolDown == 0)
         {

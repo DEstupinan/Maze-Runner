@@ -8,7 +8,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Status : MonoBehaviour
 {
-
+    //Variables that indicate the states of the players
     [HideInInspector] public bool paralysis = false;
     [HideInInspector] public int count = 0;
     [HideInInspector] private bool used = false;
@@ -33,6 +33,7 @@ public class Status : MonoBehaviour
     }
     void Update()
     {
+        //Methods for applying paralysis and blinding
         if (paralysis)
         {
             GetComponent<Move>().moveAvailable = 0;
@@ -43,15 +44,17 @@ public class Status : MonoBehaviour
         }
         if (buff)
         {
+            //Methods to activate buffs
             if (refresh && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
             {
+                //If the conditions are met, use the refresher and activate the recharge time
                 abilityCoolDown = 0;
                 refresh = false;
                 buff = false;
             }
             if (bomb && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
             {
-
+                //If the conditions are met, use the bomb and destroy adjacent walls
                 bomb = false;
                 buff = false;
                 MazeLogic mazeLogic = FindAnyObjectByType<MazeLogic>();
@@ -82,7 +85,7 @@ public class Status : MonoBehaviour
             {
                 if (!used && Input.GetKeyDown(KeyCode.R) && !GetComponent<Status>().selectionMode && GetComponent<Light2D>().pointLightOuterRadius < 6f && !FindAnyObjectByType<UIMain>().isInPause && gameObject == turn.currentPT)
                 {
-
+                    //If the conditions are met, use the torch and provide greater vision, it is deactivated at the end of its duration.
 
                     GetComponent<Light2D>().pointLightOuterRadius = 6f;
                     used = true;

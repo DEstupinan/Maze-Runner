@@ -21,6 +21,7 @@ public class UIMain : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) Pause();
     }
+    //UI function of the main scene (its buttons and interface update)
     public void ChangeStatus()
     {
         if (!status.activeSelf)

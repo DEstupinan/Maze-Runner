@@ -14,7 +14,8 @@ public class trapCooldown : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        //Requirements to be met to activate
         if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
         {
             used = true;
@@ -22,6 +23,8 @@ public class trapCooldown : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = true;
             if (!affected.GetComponent<Status>().abilityActive) affected.GetComponent<Status>().abilityCoolDown += effect;
             else affected.GetComponent<Status>().slot += effect;
+            //The cooldown increases and if you have an active skill, the penalty is
+            // in reserve and is applied when the skill ends
         }
 
         if (used && Input.GetKeyDown(KeyCode.Space) && !affected.GetComponent<Move>().isMoving && !FindAnyObjectByType<UIMain>().isInPause)

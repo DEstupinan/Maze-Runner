@@ -18,7 +18,7 @@ public class TravelPoint : MonoBehaviour
     }
 
     void Update()
-    {
+    {   //If the conditions are met, activate the portal and enter the selection mode
         aux = true;
         if (!active && !turn.currentPT.GetComponent<Status>().selectionMode &&
         turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && Input.GetKeyDown(KeyCode.F)
@@ -34,7 +34,8 @@ public class TravelPoint : MonoBehaviour
 
         }
         if (active)
-        {
+        {   
+            //If the portal is active, the movement keys are now used to switch between portals
             if (Input.GetKeyDown(KeyCode.D) && !FindAnyObjectByType<UIMain>().isInPause)
             {
                 affected.transform.position = mazeLogic.TravelPointList[3];
@@ -59,7 +60,8 @@ public class TravelPoint : MonoBehaviour
             {
                 active = false;
                 affected.GetComponent<Move>().enabled = true;
-
+                //It exits the portal with a small delay to prevent it from entering 
+                //the new one since it receives the entry and exit key in the same frame
                 Invoke("Disable", 0.01f);
             }
             if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<UIMain>().isInPause)

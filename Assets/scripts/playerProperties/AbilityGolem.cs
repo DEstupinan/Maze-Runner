@@ -29,10 +29,12 @@ public class AbilityGolem : MonoBehaviour
     void Update()
     {
         aux = true;
+        //Requirements to be met to activate
         if (!active && Input.GetKeyDown(KeyCode.E) && !move.isMoving
         && GetComponent<Status>().abilityCoolDown == 0 && gameObject == turn.currentPT
         && !GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause)
         {
+            //Create the minigolem in the current tile
             clone = Instantiate(clonePrefab, transform.position, Quaternion.identity);
             cloneTarget = transform.position;
             lastTarget = move.targetPosition;
@@ -42,6 +44,7 @@ public class AbilityGolem : MonoBehaviour
         }
         if (active)
         {
+            //logic to cancel the ability or to teleport to the minigolem
             if (gameObject != turn.currentPT) clone.SetActive(false);
             else clone.SetActive(true);
             cloneMove();
@@ -69,7 +72,7 @@ public class AbilityGolem : MonoBehaviour
     }
     void cloneMove()
     {
-
+        //Method to enable the movement of the minigolem in the opposite direction of the golem
         direction = move.targetPosition - lastTarget;
 
         if (!GetComponent<Status>().selectionMode && !FindAnyObjectByType<UIMain>().isInPause
