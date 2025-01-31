@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 584314912}
   - component: {fileID: 584314911}
   m_Layer: 5
-  m_Name: Salir
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1848,7 +1848,7 @@ GameObject:
   - component: {fileID: 888581913}
   - component: {fileID: 888581912}
   m_Layer: 5
-  m_Name: InterfazPlayer
+  m_Name: StatusPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3104,7 +3104,7 @@ MonoBehaviour:
   - {fileID: 7766577212888119587, guid: 4f18f944322efb64e8acc55a00cab1f0, type: 3}
   - {fileID: 864943184771539516, guid: c31228cab536b0848a96b87be22863ea, type: 3}
   - {fileID: 2468852666233123491, guid: 7a27e740428b98e4299bac8964d7aafb, type: 3}
-  buff: 040000000400000004000000
+  buff: 030000000400000005000000
   players: []
 --- !u!1 &1305539753
 GameObject:
@@ -3520,7 +3520,7 @@ GameObject:
   - component: {fileID: 1451289068}
   - component: {fileID: 1451289067}
   m_Layer: 5
-  m_Name: Controles
+  m_Name: ControlsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3669,8 +3669,8 @@ RectTransform:
   - {fileID: 1324144058}
   - {fileID: 2078555734}
   - {fileID: 1939225337}
-  - {fileID: 584314910}
   - {fileID: 2141191730}
+  - {fileID: 584314910}
   m_Father: {fileID: 1531098729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3728,7 +3728,7 @@ GameObject:
   - component: {fileID: 1531098728}
   - component: {fileID: 1531098727}
   m_Layer: 5
-  m_Name: MenuPausa
+  m_Name: MenuPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4156,7 +4156,7 @@ GameObject:
   - component: {fileID: 1939225339}
   - component: {fileID: 1939225338}
   m_Layer: 5
-  m_Name: CambiarP
+  m_Name: ChangeCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4471,7 +4471,7 @@ GameObject:
   - component: {fileID: 2078555736}
   - component: {fileID: 2078555735}
   m_Layer: 5
-  m_Name: Reiniciar
+  m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4736,7 +4736,7 @@ GameObject:
   - component: {fileID: 2141191732}
   - component: {fileID: 2141191731}
   m_Layer: 5
-  m_Name: volverMP
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,14 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayersNumber.unity
     guid: 52d8b487e71984741bfb47b603aa718e
   - enabled: 1
-    path: Assets/Scenes/PlayerSelection.unity
+    path: Assets/Scenes/CharacterSelection.unity
     guid: 49cd61d1448098748851e8873645f144
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2efdc6b30e3d3c8489208e4c1409f013
-  - enabled: 1
-    path: Assets/Scenes/final.unity
-    guid: 518a7364f38f4c14a8709953bee4b713
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

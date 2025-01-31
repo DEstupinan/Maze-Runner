@@ -7,7 +7,7 @@ using Unity.Collections;
 
 public class MazeLogic : MonoBehaviour
 {
-    public int row = 29, col = 29;
+    public int row = 35, col = 35;
     private int centerX;
     private int centerY;
     private Vector2Int bestPosition;

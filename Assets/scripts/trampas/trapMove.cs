@@ -5,7 +5,7 @@ public class trapMove : MonoBehaviour
     private TurnManager turn;
     private GameObject affected;
     private bool used = false;
-    [SerializeField] private int effect = 2;
+    [SerializeField] private int effect = 3;
     private int count;
 
     void Start()
@@ -15,7 +15,7 @@ public class trapMove : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.GetComponent<AbilityHunter>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
+        if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
         {
             used = true;
             affected = turn.currentPT;

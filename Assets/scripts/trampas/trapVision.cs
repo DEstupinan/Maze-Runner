@@ -16,7 +16,7 @@ public class trapVision : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.GetComponent<AbilityHunter>() == null && turn.currentPT.transform.position == transform.position
+        if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position
         && !turn.currentPT.GetComponent<Move>().isMoving && !activeEffect)
         {
             activeEffect = true;

@@ -15,7 +15,7 @@ public class trapCooldown : MonoBehaviour
 
     void Update()
     {
-        if (turn.currentPT.GetComponent<AbilityHunter>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
+        if (turn.currentPT.GetComponent<AbilityWarlock>() == null && turn.currentPT.transform.position == transform.position && !turn.currentPT.GetComponent<Move>().isMoving && !used)
         {
             used = true;
             affected = turn.currentPT;

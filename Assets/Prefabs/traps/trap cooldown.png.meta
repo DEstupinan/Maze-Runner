@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: 5da5193bbf2362f44927bce0bc422e1c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1716851588369557616
+    second: trap cooldown_0
+  - first:
+      213: 3540733964021202806
+    second: trap cooldown_1
+  - first:
+      213: 5248900973642995662
+    second: trap cooldown_2
+  - first:
+      213: -6503085615976942128
+    second: trap cooldown_3
+  - first:
+      213: 4554936753824161511
+    second: trap cooldown_4
+  - first:
+      213: -1223495293220277613
+    second: trap cooldown_5
+  - first:
+      213: -8856674566753143761
+    second: trap cooldown_6
+  - first:
+      213: 5373824620791480460
+    second: trap cooldown_7
+  - first:
+      213: -2553395786718811939
+    second: trap cooldown_8
+  - first:
+      213: 559290968122406498
+    second: trap cooldown_9
+  - first:
+      213: 2552422208228333807
+    second: trap cooldown_10
+  - first:
+      213: 2576926847368999326
+    second: trap cooldown_11
+  - first:
+      213: 5628522363777161563
+    second: trap cooldown_12
+  - first:
+      213: 2353022617730550115
+    second: trap cooldown_13
+  - first:
+      213: -1480119661931895597
+    second: trap cooldown_14
+  - first:
+      213: 95029218934986724
+    second: trap cooldown_15
+  - first:
+      213: -5727730839251621303
+    second: trap cooldown_16
+  - first:
+      213: 5703271017301315124
+    second: trap cooldown_17
+  - first:
+      213: -4914555580581446745
+    second: trap cooldown_18
+  - first:
+      213: 5857904289204946322
+    second: trap cooldown_19
+  - first:
+      213: 7458181484508923179
+    second: trap cooldown_20
+  - first:
+      213: -5371028802813103828
+    second: trap cooldown_21
+  - first:
+      213: -709010063580917137
+    second: trap cooldown_22
+  - first:
+      213: 5270608564910781108
+    second: trap cooldown_23
+  - first:
+      213: 4713012958624862636
+    second: trap cooldown_24
+  - first:
+      213: -6849873805774999674
+    second: trap cooldown_25
+  - first:
+      213: -4165634391501981502
+    second: trap cooldown_26
+  - first:
+      213: 3151896918294947696
+    second: trap cooldown_27
+  - first:
+      213: -6259656757417716308
+    second: trap cooldown_28
+  - first:
+      213: 9097848470030671935
+    second: trap cooldown_29
+  - first:
+      213: -8170349990436582091
+    second: trap cooldown_30
+  - first:
+      213: 1108050477803047280
+    second: trap cooldown_31
+  - first:
+      213: -1074226200071609143
+    second: trap cooldown_32
+  - first:
+      213: -7379692783474433854
+    second: trap cooldown_33
+  - first:
+      213: 7651011565681678904
+    second: trap cooldown_34
+  - first:
+      213: 6884650715092850930
+    second: trap cooldown_35
+  - first:
+      213: 6697779639637204749
+    second: trap cooldown_36
+  - first:
+      213: -513487242393683566
+    second: trap cooldown_37
+  - first:
+      213: 7886890276288084970
+    second: trap cooldown_38
+  - first:
+      213: 475765194913814078
+    second: trap cooldown_39
+  - first:
+      213: -8070715042125346450
+    second: trap cooldown_40
+  - first:
+      213: 4912517457861011943
+    second: trap cooldown_41
+  - first:
+      213: 4299461717067609144
+    second: trap cooldown_42
+  - first:
+      213: 3046359334346740801
+    second: trap cooldown_43
+  - first:
+      213: 1880602336158732356
+    second: trap cooldown_44
+  - first:
+      213: -2710123917457447783
+    second: trap cooldown_45
+  - first:
+      213: -6702433643591891609
+    second: trap cooldown_46
+  - first:
+      213: -5489178876845988242
+    second: trap cooldown_47
+  - first:
+      213: -5082226446759427158
+    second: trap cooldown_48
+  - first:
+      213: -2213792169876291514
+    second: trap cooldown_49
+  - first:
+      213: 7168765251909002751
+    second: trap cooldown_50
+  - first:
+      213: 9038714163634515985
+    second: trap cooldown_51
+  - first:
+      213: -1244974113319532659
+    second: trap cooldown_52
+  - first:
+      213: 4301375970040032313
+    second: trap cooldown_53
+  - first:
+      213: 1200062474136315918
+    second: trap cooldown_54
+  - first:
+      213: -656138195918456699
+    second: trap cooldown_55
+  - first:
+      213: 8852016010811599970
+    second: trap cooldown_56
+  - first:
+      213: 5060154411075126118
+    second: trap cooldown_57
+  - first:
+      213: 4350477707521129656
+    second: trap cooldown_58
+  - first:
+      213: -4571030971615672251
+    second: trap cooldown_59
+  - first:
+      213: -8013554874450004903
+    second: trap cooldown_60
+  - first:
+      213: 5614415508790310225
+    second: trap cooldown_61
+  - first:
+      213: -8084244949607683217
+    second: trap cooldown_62
+  - first:
+      213: 519996125193611527
+    second: trap cooldown_63
+  - first:
+      213: -1102658864706110026
+    second: trap cooldown_64
+  - first:
+      213: -7674750102193909401
+    second: trap cooldown_65
+  - first:
+      213: -7741426644444428452
+    second: trap cooldown_66
+  - first:
+      213: -6510727405733956184
+    second: trap cooldown_67
+  - first:
+      213: 2726496947631476394
+    second: trap cooldown_68
+  - first:
+      213: 4937498564783508357
+    second: trap cooldown_69
+  - first:
+      213: 6191938685220258845
+    second: trap cooldown_70
+  - first:
+      213: 2948417383520585450
+    second: trap cooldown_71
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 42
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TrapCooldown
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 396
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab7786ecbdfbcbb0800000000000000
+      internalID: -4914555580581446745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 00c2423293581e44eb7bfb4c9be01bbe
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TrapCooldown: -4914555580581446745
+      trap cooldown_0: 855801395
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

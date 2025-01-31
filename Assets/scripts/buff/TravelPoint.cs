@@ -59,8 +59,8 @@ public class TravelPoint : MonoBehaviour
             {
                 active = false;
                 affected.GetComponent<Move>().enabled = true;
-                
-                Invoke("Disable",0.01f);
+
+                Invoke("Disable", 0.01f);
             }
             if (Input.GetKeyDown(KeyCode.Space) && !FindAnyObjectByType<interfazBoton>().isInPause)
             {
@@ -71,7 +71,7 @@ public class TravelPoint : MonoBehaviour
         }
 
     }
-   void Disable()
+    void Disable()
     {
         affected.GetComponent<Status>().selectionMode = false;
     }

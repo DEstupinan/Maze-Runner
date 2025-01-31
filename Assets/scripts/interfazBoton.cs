@@ -69,15 +69,15 @@ public class interfazBoton : MonoBehaviour
     {
         isInPause = false;
         Time.timeScale = 1f;
-        finished=false;
+        finished = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void cambiarP()
     {
         isInPause = false;
         Time.timeScale = 1f;
-        finished=false;
-        SceneManager.LoadScene("PlayerSelection");
+        finished = false;
+        SceneManager.LoadScene("CharacterSelection");
     }
     public void Salir()
     {
@@ -87,17 +87,17 @@ public class interfazBoton : MonoBehaviour
     {
         isInPause = false;
         Time.timeScale = 1f;
-        finished=false;
+        finished = false;
         SceneManager.LoadScene("MainMenu");
     }
     public void End()
-    {   
-        
+    {
+
         finished = true;
         end.SetActive(true);
         cameraFollow.GetComponent<CameraFollow>().enabled = false;
-        cameraFollow.transform.position=new Vector3(mazeLogic.col/2,mazeLogic.row/2,-10);
-        cameraFollow.GetComponent<Camera>().orthographicSize=18;
+        cameraFollow.transform.position = new Vector3(mazeLogic.col / 2, mazeLogic.row / 2, -10);
+        cameraFollow.GetComponent<Camera>().orthographicSize = 18;
         lightG.SetActive(true);
         winnerTag = FindAnyObjectByType<Treasure>().GetComponent<Treasure>().winnerN;
         switch (winnerTag)
@@ -109,7 +109,7 @@ public class interfazBoton : MonoBehaviour
 
             default: break;
         }
-        winnerText.text =$"El {winnerName} ha ganado !!!";
+        winnerText.text = $"El {winnerName} ha ganado !!!";
         isInPause = true;
         Time.timeScale = 0f;
     }

@@ -107,7 +107,7 @@ public class TurnManager : MonoBehaviour
             if (currentPT.GetComponent<Status>().torch)
                 textBuff.text = "Antorcha";
             if (currentPT.GetComponent<Status>().bomb) textBuff.text = "Bomba";
-            if (currentPT.GetComponent<Status>().refresh) textBuff.text = "Gema";
+            if (currentPT.GetComponent<Status>().refresh) textBuff.text = "Refresher";
         }
         else textBuff.text = "Ninguno";
         textStatus.text = "SinCambios";
