@@ -3335,7 +3335,7 @@ GameObject:
   - component: {fileID: 1436890403}
   - component: {fileID: 1436890402}
   m_Layer: 5
-  m_Name: TrapMve
+  m_Name: TrapMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3673,8 +3673,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 994810515}
-        m_TargetAssemblyTypeName: Enciclopedia, Assembly-CSharp
-        m_MethodName: Portal
+        m_TargetAssemblyTypeName: Encyclopedia, Assembly-CSharp
+        m_MethodName: DarkEntrance
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4689,8 +4689,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 994810515}
-        m_TargetAssemblyTypeName: Enciclopedia, Assembly-CSharp
-        m_MethodName: TrapBeard
+        m_TargetAssemblyTypeName: Encyclopedia, Assembly-CSharp
+        m_MethodName: TrapMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6340,8 +6340,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 994810515}
-        m_TargetAssemblyTypeName: Enciclopedia, Assembly-CSharp
-        m_MethodName: Gema
+        m_TargetAssemblyTypeName: Encyclopedia, Assembly-CSharp
+        m_MethodName: Refresher
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

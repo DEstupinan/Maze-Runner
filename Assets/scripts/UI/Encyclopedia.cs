@@ -7,11 +7,11 @@ public class Encyclopedia : MonoBehaviour
     public TMP_Text description;
     public void Wizard()
     {
-        description.text = "Poderoso hechizero capaz de crear portales en su beneficio. Su técnica requiere estudio y preparación.\n\nHabilidad: Crea un portal en el muro adyacente seleccionado permitiendo el movimiento a través de él. Desaparece al finalizar el turno.\n\nTiempo de recarga: 6 turnos.\n\nPasos iniciales: 6.";
+        description.text = "Poderoso hechicero capaz de crear portales en su beneficio. Su técnica requiere estudio y preparación.\n\nHabilidad: Crea un portal en el muro adyacente seleccionado permitiendo el movimiento a través de él. Desaparece al finalizar el turno.\n\nTiempo de recarga: 6 turnos.\n\nPasos iniciales: 6.";
     }
     public void Minotaur()
     {
-        description.text = "Bestia mitad hombre mitad toro con gran capacidad muscular. Si bien parece una criatura torpe, efectivamente lo es.\n\nHabilidad: Aumenta la cantidad de pasos disponibles en 10. Al activarse remueve el estado de paralisis.\n\nTiempo de recarga: 4 turnos.\n\nPasos iniciales: 7.";
+        description.text = "Bestia mitad hombre mitad toro con gran capacidad muscular. Si bien parece una criatura torpe, efectivamente lo es.\n\nHabilidad: Aumenta la cantidad de pasos disponibles en 10. Al activarse remueve el estado de parálisis.\n\nTiempo de recarga: 4 turnos.\n\nPasos iniciales: 7.";
     }
     public void Oracle()
     {
@@ -23,13 +23,13 @@ public class Encyclopedia : MonoBehaviour
     }
     public void DarkEntity()
     {
-        description.text = "Entidad desconocida investigada por brujos y hechizeros. Se cree que puede fragmentar su alma y moverse entre dimensiones.\n\nHabilidad: Crea una marca en el camino actual a la que puede teletransportarse. La marca aporta visión durante su turno y no desaparecerá hasta que se use o cancele. No cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
+        description.text = "Entidad desconocida investigada por brujos y hechiceros. Se cree que puede fragmentar su alma y moverse entre dimensiones.\n\nHabilidad: Crea una marca en el camino actual a la que puede teletransportarse. La marca aporta visión durante su turno y no desaparecerá hasta que se use o cancele. No cura la parálisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
     }
     public void Golem()
     {
-        description.text = "Creación de los hechizeros para caseres domésticos. Una entidad oscura se fusionó con él.\n\nHabilidad: Crea un minigolem en al que puede teletransportarse. El minigolem aporta visión durante su turno y no desaparecerá hasta que se use o cancele. Además el minigolem es terco y se mueve en dirección opuesta al jugador. No cura la paralisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
+        description.text = "Creación de los hechiceros para quehaceres domésticos. Una entidad oscura se fusionó con él.\n\nHabilidad: Crea un minigolem en al que puede teletransportarse. El minigolem aporta visión durante su turno y no desaparecerá hasta que se use o cancele. Además el minigolem es terco y se mueve en dirección opuesta al jugador. No cura la parálisis.\n\nTiempo de recarga: 2 turnos.\n\nPasos iniciales: 8.";
     }
-    public void TrapBeard()
+    public void TrapMove()
     {
         description.text = "Efecto: Paraliza al primer jugador que caiga sobre ella durante 3 turnos.";
     }
@@ -49,11 +49,11 @@ public class Encyclopedia : MonoBehaviour
     {
         description.text = "Efecto: Destruye todos los muros en un radio de una casilla alrededor del jugador.";
     }
-    public void Gema()
+    public void Refresher()
     {
         description.text = "Efecto: Reduce el tiempo de recarga de la habilidad del jugador a 0. No conviene usarlo cuando la habilidad esté disponible.";
     }
-    public void Portal()
+    public void DarkEntrance()
     {
         description.text = "Existen 4 ubicadas en cada extremo del mapa. Al activarse permite teletransportarse entre ellas ";
     }
@@ -67,7 +67,7 @@ public class Encyclopedia : MonoBehaviour
     }
     public void Status()
     {
-        description.text = "Sin Cambios: Estado base. EL jugador al estar en este estado puede realizar una acción.\n\nMoviendo: El jugador se está moviendo y no se puede realizar otra acción hasta que esté en el estado SIN CAMBIOS.\n\nModo Selección: En este estado las teclas de movimineto se utilizan para seleccionar y no se puede realizar otra acción hasta salir de este estado.";
+        description.text = "Sin Cambios: Estado base. EL jugador al estar en este estado puede realizar una acción.\n\nMoviendo: El jugador se está moviendo y no se puede realizar otra acción hasta que esté en el estado SIN CAMBIOS.\n\nModo Selección: En este estado las teclas de movimiento se utilizan para seleccionar y no se puede realizar otra acción hasta salir de este estado.";
     }
     public void Status2()
     {
