@@ -1,6 +1,6 @@
 # Introducción
 
-Este juego se creó usando Unity 6(6000.0.24f1).En la carpeta scripts están contenidos todos los scripts usados. En la carpeta prefabs están los prefabs junto con sus sprites. Los scripts principales son el TurnManager (lógica de los turnos), el MazeLogic(lógica de generación del mapa) y el Status(controla los diferentes estados de los jugadores ).El resto de script controla funciones más individuales pero igual de importantes tal es el caso de las habilidades, trampas, buffs, interfaz, etc.
+Este juego se creó usando Unity 6(6000.0.24f1).En la carpeta scripts ubicada en Assets están contenidos todos los scripts usados. En la carpeta prefabs están los prefabs junto con sus sprites. Los principales scripts son el TurnManager (lógica de los turnos), el MazeLogic(lógica de generación del mapa) y el Status(controla los diferentes estados de los jugadores ).El resto de script controla funciones más individuales pero igual de importantes tal es el caso de las habilidades, trampas, buffs, interfaz, etc.
 
 # MazeLogic
 
