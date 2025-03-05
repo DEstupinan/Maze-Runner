@@ -178,7 +178,7 @@ MonoBehaviour:
   torch: 0
   selectionMode: 0
   abilityActive: 0
-  reserva: 0
+  slot: 0
   refresh: 0
   buff: 0
   blind: 0
@@ -198,7 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 2
-  lastTarget: {x: 0, y: 0}
-  direction: {x: 1, y: 0}
-  clonPrefab: {fileID: 3073531867353177662, guid: 5e9e9ea94e465644ea36796b188558dd, type: 3}
-  clonTarget: {x: 0, y: 0}
+  clonePrefab: {fileID: 3073531867353177662, guid: 5e9e9ea94e465644ea36796b188558dd, type: 3}
